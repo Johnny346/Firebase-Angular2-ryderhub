@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   templateUrl: 'dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
+
+  constructor(public afAuth: AngularFireAuth){};
 
   radioModel: string = 'Month';
 
@@ -378,6 +381,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.afAuth;
     // generate random values for mainChart
     for (let i = 0; i <= this.mainChartElements; i++) {
       this.mainChartData1.push(this.random(50, 200));

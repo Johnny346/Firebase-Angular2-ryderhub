@@ -6,7 +6,12 @@
           <div class="card-group">
             <div class="card p-4">
               <div class="card-body">
+                
                 <form>
+                  <p>here</p>
+                  <div *ngIf="afAuth.user | async as user">
+                      <p>Name: {{ user.displayName }}</p>
+                  </div>
                   <h1>Login</h1>
                   <p class="text-muted">Sign In to your account</p>
                   <div class="input-group mb-3">

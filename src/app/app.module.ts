@@ -18,8 +18,12 @@ import { DefaultLayoutComponent } from './containers';
 
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
-import { LoginComponent } from './views/login/login.component';
+import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './views/register/register.component';
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule }from '@angular/fire/auth';
+import { FormsModule } from '@angular/forms';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -40,6 +44,7 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
+import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 
 @NgModule({
   imports: [
@@ -54,7 +59,10 @@ import { ChartsModule } from 'ng2-charts';
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    FormsModule
   ],
   declarations: [
     AppComponent,
@@ -64,10 +72,13 @@ import { ChartsModule } from 'ng2-charts';
     LoginComponent,
     RegisterComponent
   ],
-  providers: [{
-    provide: LocationStrategy,
-    useClass: HashLocationStrategy
-  }],
+  providers: [
+    AngularFireAuthGuardModule,
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    }
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

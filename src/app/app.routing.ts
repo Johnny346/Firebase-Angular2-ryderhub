@@ -6,14 +6,19 @@ import { DefaultLayoutComponent } from './containers';
 
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
-import { LoginComponent } from './views/login/login.component';
+import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './views/register/register.component';
-
+import { AngularFireAuthGuardModule, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from './core/auth.service';
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
+ 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'dashboard',
     redirectTo: 'dashboard',
-    pathMatch: 'full',
+    canActivate: [AngularFireAuthGuardModule],
+    data: { authGuardPipe: redirectUnauthorizedToLogin}
   },
   {
     path: '404',
@@ -27,6 +32,13 @@ export const routes: Routes = [
     component: P500Component,
     data: {
       title: 'Page 500'
+    }
+  },
+  {
+    path: '',
+    component: LoginComponent,
+    data: {
+      title: 'Login Page'
     }
   },
   {
