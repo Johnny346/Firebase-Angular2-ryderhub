@@ -1,0 +1,155 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <img src="assets/img/drawing2.png" height="70" width="210" alt="logo" style="margin-right:55px;"/>
+            <button aria-controls="navbarSupportedContent" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" class="navbar-toggler" type="button" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" [collapse]="isCollapsed" [isAnimated]="true">
+              <ul class="navbar-nav mr-auto">
+                
+                <li class="nav-item active" >
+                  <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item dropdown" dropdown>
+                  <a id="link-dropdown" class="nav-link dropdown-toggle" href dropdownToggle (click)="false" aria-controls="your-dropdown">
+                    Features
+                  </a>
+                  <div id="your-dropdown" class="dropdown-menu" aria-labelledby="link-dropdown" *dropdownMenu>
+                    <a class="dropdown-item" href="#">Features</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">About Us</a>
+                </li>
+              </ul>
+              <ul class="navbar-nav pull-right">
+                <li class="nav-item ">
+                    <a class="nav-link" routerLink="../login">Login</a>
+                </li>
+                <li class="nav-item " > 
+                    <a class="nav-link" routerLink="../register" style="color:#0e0ec0">Sign Up For Free</a>
+                </li>
+              </ul>
+              <!--<form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>-->
+            </div>
+          </nav>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron jumbotron-fluid" style="background-image: url('assets/img/trianglify.png');">
+  <div class="container text-center" >
+    
+    <h1 class="display-4">A new Platform</h1>
+    <p>We provide a platform for Self-employed workers as a tool to increase productivty and give clarity on earnings through a usable and functional dashboard application.
+      <br/>
+      Create a profile and upload your invoices to benefit from all the features that will be provided.
+    </p>
+  </div>
+</div>
+<div class="container">
+  <section>
+    <header>
+      <h2>Services</h2>
+    </header>
+  </section>
+  <p>We provide a platform for Self-employed workers as a tool to increase productivty and give clarity on earnings through a usable and functional dashboard application.
+    <br/>
+    Create a profile and upload your invoices to benefit from all the features that will be provided.</p>
+  <div class="row">
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+  </div>
+</div>
+<div class="container">
+  <section>
+    <header>
+      <h2>Features</h2>
+    </header>
+  </section>
+  <div class="row">
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+  </div>
+</div>
+<div class="container">
+  <section>
+    <header>
+      <h2>About Us</h2>
+    </header>
+  </section>
+  <p>
+    Our team are experienced, professional and passionate. We share a vision of connected workers in society for all.
+
+We pride ourselves on delivering world class solutions to solving the most complex challenges in society.
+
+With our platform as a service technology and expertise in large scale transforma.
+
+
+  </p>
+  <div class="row">
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+  </div>
+</div>
+<div class="container">
+  <section>
+    <header>
+      <h2>Footer</h2>
+    </header>
+  </section>
+  
+</div>
+<!--<carousel>
+    <slide>
+      <img src="assets/images/nature/7.jpg" alt="First slide">
+      <div class="carousel-caption">
+        <h3>First slide label</h3>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </div>
+    </slide>
+    <slide>
+      <img src="assets/img/trianglify.png" alt="Second slide">
+      <div class="carousel-caption">
+        <h3>Second slide label</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </slide>
+    <slide>
+      <img src="assets/images/nature/1.jpg" alt="Third slide">
+      <div class="carousel-caption">
+        <h3>Third slide label</h3>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      </div>
+    </slide>
+  </carousel>-->

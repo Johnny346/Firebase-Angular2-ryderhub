@@ -45,6 +45,10 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
+import { LandingpageComponent } from "./landingpage/landingpage.component";
+import {AfterViewChecked, Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {CollapseDirective} from 'ngx-bootstrap/collapse';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
   imports: [
@@ -62,7 +66,8 @@ import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
     ChartsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    FormsModule
+    FormsModule,
+    CarouselModule
   ],
   declarations: [
     AppComponent,
@@ -70,7 +75,10 @@ import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LandingpageComponent,
+    CollapseDirective
+    
   ],
   providers: [
     AngularFireAuthGuardModule,
