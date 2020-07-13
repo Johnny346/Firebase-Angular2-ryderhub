@@ -39,5 +39,9 @@ export class LandingpageComponent implements OnInit, AfterViewChecked {
   ngAfterViewChecked (): void {
     this.collapseRef = this.collapse;
   }
+  scrollToElement($element): void {
+    console.log($element);
+    $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+  }
 }
 

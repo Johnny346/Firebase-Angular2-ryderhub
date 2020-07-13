@@ -1,31 +1,31 @@
 <div class="animated fadeIn">
   <div class="row">
     <div class="col">
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <img src="assets/img/drawing2.png" height="70" width="210" alt="logo" style="margin-right:55px;"/>
+          <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fff;">
+            <img src="assets/img/drawing2.png" height="60" width="190" alt="logo" style="margin-right:55px;"/>
             <button aria-controls="navbarSupportedContent" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" class="navbar-toggler" type="button" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent" [collapse]="isCollapsed" [isAnimated]="true">
-              <ul class="navbar-nav mr-auto">
+              <ul class="navbar-nav mr-auto" style="cursor: pointer;">
                 
-                <li class="nav-item active" >
-                  <a class="nav-link" href="#">Services</a>
+                <li class="nav-item active" (click)="scrollToElement(services)">
+                  <a class="nav-link" >Services</a>
                 </li>
                 <li class="nav-item dropdown" dropdown>
                   <a id="link-dropdown" class="nav-link dropdown-toggle" href dropdownToggle (click)="false" aria-controls="your-dropdown">
                     Features
                   </a>
                   <div id="your-dropdown" class="dropdown-menu" aria-labelledby="link-dropdown" *dropdownMenu>
-                    <a class="dropdown-item" href="#">Features</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" (click)="scrollToElement(features)">Features</a>
+                    <a class="dropdown-item" (click)="scrollToElement(features)">Another action</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" (click)="scrollToElement(features)">Something else here</a>
                   </div>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">About Us</a>
+                  <a class="nav-link" (click)="scrollToElement(about)">About</a>
                 </li>
               </ul>
               <ul class="navbar-nav pull-right">
@@ -33,7 +33,7 @@
                     <a class="nav-link" routerLink="../login">Login</a>
                 </li>
                 <li class="nav-item " > 
-                    <a class="nav-link" routerLink="../register" style="color:#0e0ec0">Sign Up For Free</a>
+                    <a class="nav-link" routerLink="../register" style="color:#20a8d8; font-size: 14px;">Sign Up For Free</a>
                 </li>
               </ul>
               <!--<form class="form-inline my-2 my-lg-0">
@@ -50,85 +50,214 @@
   <div class="container text-center" >
     
     <h1 class="display-4">A new Platform</h1>
-    <p>We provide a platform for Self-employed workers as a tool to increase productivty and give clarity on earnings through a usable and functional dashboard application.
+    <p style="padding: 3%;">We provide a platform for Self-employed workers as a tool to increase productivity and give clarity on earnings through a usable and functional dashboard application.
       <br/>
       Create a profile and upload your invoices to benefit from all the features that will be provided.
     </p>
   </div>
 </div>
-<div class="container">
-  <section>
+<div class="container" #services>
+  <div class="row">
+    <div class="col-4">
+      <section>
+        <header>
+          <br/>
+          <h2>What we offer</h2>
+        </header>
+      </section>
+        <br/>
+        
+       <p>We provide a platform for Self-employed workers as a tool to increase productivity and give clarity on earnings through a usable and functional dashboard application.
+        <br/>
+        <br/>
+        Create a profile and upload your invoices to benefit from all the features that will be provided.</p>
+    </div>
+    <div class="col-8">
+      <div class="container" style="display: inline-block;">
+        <img class="landing-page-img" src="assets/img/full-dashboard-webview.PNG">
+      </div>
+    </div>
+  </div>
+</div>
+<br/>
+<br/>
+<hr/>
+<div class="container text-center" style="background-color: #d5f6eb21;
+">
+  <section #features>
     <header>
-      <h2>Services</h2>
+      <h1>Features</h1>
     </header>
   </section>
-  <p>We provide a platform for Self-employed workers as a tool to increase productivty and give clarity on earnings through a usable and functional dashboard application.
+  <div class="row">
+    <div class="col-sm">
+      <div class="features-block" >
+        <i class="cui-chart icons font-2xl d-block mt-4"></i>
+        <h4>
+          Invoice Manager
+        </h4>
+        <p>
+          Payment breakdown
+          <br/>
+          Tax calculator
+        </p> 
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="features-block" >
+        <i class="cui-location-pin icons font-2xl d-block mt-4"></i>
+        <br/>
+        <h4>
+          Distance Manager
+        </h4>
+        <p>show distance travelled</p> 
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="features-block" >
+        <i class="cui-star icons font-2xl d-block mt-4"></i>
+        <i class="cui-star icons font-2xl  mt-4"></i>
+        <i class="cui-star icons font-2xl  mt-4"></i>
+        <h4>
+          Game mode
+        </h4>
+        <p> League of ryders in your city</p> 
+      </div>
+    </div>
+  </div>
+  <br/>
+  <br/>
+  <hr/>
+  <h3>New Features Actively Being Developed</h3>
+  <div class="row">
+    <div class="col-sm">
+      <div class="features-block" >
+        <i class="cui-people font-2xl d-block mt-4"></i>
+        <h4>
+          Combine & Share stats
+        </h4>
+        <p>
+          Combine your data and share with outer ryders
+          Global data analysis from combined ryder data</p> 
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="features-block" >
+        <i class="cui-tags icons font-2xl d-block mt-4"></i>
+        <h4>
+          Equipment Manager
+        </h4>
+        <p>
+          Choose  vehicle type: car, bicycle, scooter
+          <br/>
+          Link to Affiliate products
+          <br/>
+          Reminders replace/repair parts 
+        </p> 
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="features-block" >
+        <i class="cui-comment-square icons font-2xl d-block mt-4"></i>
+        <h4>
+          Messenger
+        </h4>
+        <p>
+          Weather Alerts
+          <br/>
+          Roads Closed
+          <br/>
+          Chat between other ryders
+          <br/> </p> 
+      </div>
+    </div>
+  </div>
+</div>
+<br/>
+<br/>
+<hr/>
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+     <div class="container">
+        <img class="landing-page-img" src="assets/img/charts-img.PNG">
+      </div>
+    </div>
+    <div class="col-4">
+      <section>
+        <header>
+          <br/>
+          <h2>Analysis through a dashboard application</h2>
+        </header>
+      </section>
+        <br/>
+        
+       <p>We provide a platform for Self-employed workers as a tool to increase productivity and give clarity on earnings through a usable and functional dashboard application.
+        <br/>
+        <br/>
+        Create a profile and upload your invoices to benefit from all the features that will be provided.</p>
+    
+    </div>
+  </div>
+</div>
+<br/>
+<br/>
+<br/>
+<div class="jumbotron jumbotron-fluid"  style="padding:5%; background-image: url('assets/img/about-us.jpg'); margin: 0;">
+  <div class="row" #about>
+    <div class="col-8">
+      <section>
+        <header>
+          <h2>About RyderHub</h2>
+        </header>
+      </section>
+      <p>
+        Our team are experienced, professional and passionate. We share a vision of connected workers in society for all.
+    
+    We pride ourselves on delivering world class solutions to solving the most complex challenges in society.
     <br/>
-    Create a profile and upload your invoices to benefit from all the features that will be provided.</p>
-  <div class="row">
-    <div class="col-sm">
-      One of three columns
+    <br/>
+    With our platform as a service technology and expertise in large scale transforma.
+    
+    
+      </p>
     </div>
-    <div class="col-sm">
-      One of three columns
-    </div>
-    <div class="col-sm">
-      One of three columns
+    <div class="col-4">
+      
     </div>
   </div>
 </div>
-<div class="container">
-  <section>
-    <header>
-      <h2>Features</h2>
-    </header>
-  </section>
-  <div class="row">
-    <div class="col-sm">
-      One of three columns
-    </div>
-    <div class="col-sm">
-      One of three columns
-    </div>
-    <div class="col-sm">
-      One of three columns
-    </div>
-  </div>
-</div>
-<div class="container">
-  <section>
-    <header>
-      <h2>About Us</h2>
-    </header>
-  </section>
-  <p>
-    Our team are experienced, professional and passionate. We share a vision of connected workers in society for all.
-
-We pride ourselves on delivering world class solutions to solving the most complex challenges in society.
-
-With our platform as a service technology and expertise in large scale transforma.
-
-
-  </p>
-  <div class="row">
-    <div class="col-sm">
-      One of three columns
-    </div>
-    <div class="col-sm">
-      One of three columns
-    </div>
-    <div class="col-sm">
-      One of three columns
-    </div>
-  </div>
-</div>
-<div class="container">
-  <section>
-    <header>
-      <h2>Footer</h2>
-    </header>
-  </section>
+<div class="jumbotron jumbotron-fluid text-white"  style="padding:3%; padding-bottom: 20px;background-color: #293f4d; margin-bottom: 0;">
   
+  <div class="row">
+    <div class="col-3">
+      <img src="assets/img/drawing2.png" height="60" width="190" alt="logo" style="display:block;background-color: #fff;
+      border-radius: 30px; margin-right:55px;"/>
+    </div>
+    <div class="col-3">
+      <ul class="navbar-nav mr-auto" style="font-size: 1.2em; cursor: pointer;">
+        <li><a style="color:white;" (click)="scrollToElement(services)">Services</a></li>
+        <li><a style="color:white;" (click)="scrollToElement(features)">Features</a></li>
+        <li><a style="color:white;" (click)="scrollToElement(about)">About Us</a></li>
+      </ul>
+    </div>
+    <div class="col-3">
+     
+    </div>
+    <div class="col-3">
+      <ul class="navbar-nav mr-auto" style="font-size: 1.2em;">
+        <li>Contact Info:</li>
+        <li>Johnmulcahy346@gmail.com</li>
+        <li>
+          <i class="fa fa-facebook-f fa-lg mt-4"></i>
+          <i class="fa fa-twitter-square fa-lg mt-4"></i>
+          <i class="fa fa-git-square fa-lg mt-4"></i>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <br/>
+  <p style="padding-top:5%">&copy; 2020 MyRyderHub designed by John Mulcahy</p>
 </div>
 <!--<carousel>
     <slide>
