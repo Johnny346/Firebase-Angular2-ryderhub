@@ -1,7 +1,8 @@
 
 # RyderHub.ml 
 ### This project is using a free open souce Angular bootstrap template from CoreUI.io
-### CoreUI Free Angular 2+ Admin Template [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?text=CoreUI%20-%20Free%20Bootstrap%204%20Admin%20Template%20&url=https://coreui.io&hashtags=bootstrap,admin,template,dashboard,panel,free,angular,react,vue)
+### this repository is cloned from https://github.com/coreui/coreui-free-angular-admin-template
+CoreUI Free Angular 2+ Admin Template [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?text=CoreUI%20-%20Free%20Bootstrap%204%20Admin%20Template%20&url=https://coreui.io&hashtags=bootstrap,admin,template,dashboard,panel,free,angular,react,vue)
 
 ## RyderHub is an app for deliveroo ryders. A dashboard application for uploading payment invoices for later analysis
 
