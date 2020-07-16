@@ -13,18 +13,10 @@
                 <li class="nav-item active" (click)="scrollToElement(services)">
                   <a class="nav-link" >Services</a>
                 </li>
-                <li class="nav-item dropdown" dropdown>
-                  <a id="link-dropdown" class="nav-link dropdown-toggle" href dropdownToggle (click)="false" aria-controls="your-dropdown">
-                    Features
-                  </a>
-                  <div id="your-dropdown" class="dropdown-menu" aria-labelledby="link-dropdown" *dropdownMenu>
-                    <a class="dropdown-item" (click)="scrollToElement(features)">Features</a>
-                    <a class="dropdown-item" (click)="scrollToElement(features)">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" (click)="scrollToElement(features)">Something else here</a>
-                  </div>
-                </li>
                 <li class="nav-item">
+                  <a class="nav-link" (click)="scrollToElement(features)">Features</a>
+                </li>
+               <li class="nav-item">
                   <a class="nav-link" (click)="scrollToElement(about)">About</a>
                 </li>
               </ul>
@@ -49,30 +41,30 @@
 <div class="jumbotron jumbotron-fluid" style="background-image: url('assets/img/trianglify.png');">
   <div class="container text-center" >
     
-    <h1 class="display-4">A new Platform</h1>
-    <p style="padding: 3%;">We provide a platform for Self-employed workers as a tool to increase productivity and give clarity on earnings through a usable and functional dashboard application.
+    <h1 class="display-4">A New Platform</h1>
+    <p style="padding: 3%;">To help you increase your productivity and give you clarity on earnings through a usable and functional dashboard application.
       <br/>
-      Create a profile and upload your invoices to benefit from all the features that will be provided.
+      Create a profile and upload your invoices to benefit from all the available features.
     </p>
   </div>
 </div>
 <div class="container" #services>
   <div class="row">
-    <div class="col-4">
+    <div class="col-md-4">
       <section>
         <header>
           <br/>
-          <h2>What we offer</h2>
+          <h2>What We Offer</h2>
         </header>
       </section>
         <br/>
         
-       <p>We provide a platform for Self-employed workers as a tool to increase productivity and give clarity on earnings through a usable and functional dashboard application.
+       <p>A Dashboard style application developed for Self-employed workers, this application gives a overview and breakdown of your invoice payments.
         <br/>
         <br/>
-        Create a profile and upload your invoices to benefit from all the features that will be provided.</p>
+        Create a profile in the Signup page and upload your invoices to begin.</p>
     </div>
-    <div class="col-8">
+    <div class="col-md-8">
       <div class="container" style="display: inline-block;">
         <img class="landing-page-img" src="assets/img/full-dashboard-webview.PNG">
       </div>
@@ -102,6 +94,7 @@
           Tax calculator
         </p> 
       </div>
+      <br/>
     </div>
     <div class="col-sm">
       <div class="features-block" >
@@ -112,24 +105,8 @@
         </h4>
         <p>show distance travelled</p> 
       </div>
+      <br/>
     </div>
-    <div class="col-sm">
-      <div class="features-block" >
-        <i class="cui-star icons font-2xl d-block mt-4"></i>
-        <i class="cui-star icons font-2xl  mt-4"></i>
-        <i class="cui-star icons font-2xl  mt-4"></i>
-        <h4>
-          Game mode
-        </h4>
-        <p> League of ryders in your city</p> 
-      </div>
-    </div>
-  </div>
-  <br/>
-  <br/>
-  <hr/>
-  <h3>New Features Actively Being Developed</h3>
-  <div class="row">
     <div class="col-sm">
       <div class="features-block" >
         <i class="cui-people font-2xl d-block mt-4"></i>
@@ -140,6 +117,26 @@
           Combine your data and share with outer ryders
           Global data analysis from combined ryder data</p> 
       </div>
+      <br/>
+    </div>
+  </div>
+  <br/>
+  <br/>
+  <hr/>
+  <h3>New Features Actively Being Developed</h3>
+  <br/>
+  <div class="row">
+    <div class="col-sm">
+      <div class="features-block" >
+        <i class="cui-star icons font-2xl d-block mt-4"></i>
+        <i class="cui-star icons font-2xl  mt-4"></i>
+        <i class="cui-star icons font-2xl  mt-4"></i>
+        <h4>
+          Game mode
+        </h4>
+        <p> League of ryders in your city</p> 
+      </div>
+      <br/>
     </div>
     <div class="col-sm">
       <div class="features-block" >
@@ -155,6 +152,7 @@
           Reminders replace/repair parts 
         </p> 
       </div>
+      <br/>
     </div>
     <div class="col-sm">
       <div class="features-block" >
@@ -170,6 +168,7 @@
           Chat between other ryders
           <br/> </p> 
       </div>
+      <br/>
     </div>
   </div>
 </div>
@@ -183,19 +182,19 @@
         <img class="landing-page-img" src="assets/img/charts-img.PNG">
       </div>
     </div>
-    <div class="col-4">
+    <div class="col-md-4">
       <section>
         <header>
           <br/>
-          <h2>Analysis through a dashboard application</h2>
+          <h2>Analysis Through A Dashboard Application</h2>
         </header>
       </section>
         <br/>
         
-       <p>We provide a platform for Self-employed workers as a tool to increase productivity and give clarity on earnings through a usable and functional dashboard application.
+       <p>Payment history can be broken down in various charts and table to give you a quick and better understanding of your income.
         <br/>
         <br/>
-        Create a profile and upload your invoices to benefit from all the features that will be provided.</p>
+        By using this application you can benefit from all the features currently being developed.</p>
     
     </div>
   </div>
@@ -205,21 +204,18 @@
 <br/>
 <div class="jumbotron jumbotron-fluid"  style="padding:5%; background-image: url('assets/img/about-us.jpg'); margin: 0;">
   <div class="row" #about>
-    <div class="col-8">
+    <div class="col-md-8">
       <section>
         <header>
           <h2>About RyderHub</h2>
         </header>
       </section>
       <p>
-        Our team are experienced, professional and passionate. We share a vision of connected workers in society for all.
-    
-    We pride ourselves on delivering world class solutions to solving the most complex challenges in society.
+        This project came about from a need for greather oversight of payments and a desire to develop a tool to accomplish that task,
+        We share a vision of connected workers in society for all and we pride ourselves on delivering world class solutions to solving complex challenges.
     <br/>
     <br/>
-    With our platform as a service technology and expertise in large scale transforma.
-    
-    
+    With our platform as a service we hope to grow a strong community and continue to grow and transform this project into the future.
       </p>
     </div>
     <div class="col-4">
@@ -230,21 +226,21 @@
 <div class="jumbotron jumbotron-fluid text-white"  style="padding:3%; padding-bottom: 20px;background-color: #293f4d; margin-bottom: 0;">
   
   <div class="row">
-    <div class="col-3">
+    <div class="col-sm-3">
       <img src="assets/img/drawing2.png" height="60" width="190" alt="logo" style="display:block;background-color: #fff;
       border-radius: 30px; margin-right:55px;"/>
     </div>
-    <div class="col-3">
+    <div class="col-sm-3">
       <ul class="navbar-nav mr-auto" style="font-size: 1.2em; cursor: pointer;">
         <li><a style="color:white;" (click)="scrollToElement(services)">Services</a></li>
         <li><a style="color:white;" (click)="scrollToElement(features)">Features</a></li>
         <li><a style="color:white;" (click)="scrollToElement(about)">About Us</a></li>
       </ul>
     </div>
-    <div class="col-3">
+    <div class="col-sm-3">
      
     </div>
-    <div class="col-3">
+    <div class="col-sm-3">
       <ul class="navbar-nav mr-auto" style="font-size: 1.2em;">
         <li>Contact Info:</li>
         <li>Johnmulcahy346@gmail.com</li>
