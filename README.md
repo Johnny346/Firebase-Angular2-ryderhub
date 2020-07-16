@@ -1,5 +1,5 @@
 
-# RyderHub.ml  home page access here [www.myryderhub.co.uk](http://www.myryderhub.co.uk/#/home)
+# Project home page access here [www.myryderhub.co.uk](http://www.myryderhub.co.uk/#/home)
 
 
 ### This project is using a free open souce Angular bootstrap template from CoreUI.io
