@@ -21,8 +21,9 @@ export class LoginComponent implements OnInit {
     const [ email, password, firstname, ryderid, lastname ] = form.value;
     let resp;
     try {
-      console.log(form.value);
+      //console.log(form.value);
       resp = await this.afAuth.signInWithEmailAndPassword(form.value.email, form.value.password);
+      await resp.user.updateProfile({ displayName: form.value.email})
       form.reset();
       this.router.navigate(['/dashboard']);
     } catch (error) {

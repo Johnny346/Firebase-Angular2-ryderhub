@@ -11,7 +11,7 @@ import { RegisterComponent } from './views/register/register.component';
 import { AngularFireAuthGuardModule, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from './core/auth.service';
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
  
 export const routes: Routes = [
   {
@@ -59,7 +59,8 @@ export const routes: Routes = [
     path: '',
     component: DefaultLayoutComponent,
     data: {
-      title: 'Home'
+      canActivate: [AngularFireAuthGuardModule],
+      data: { authGuardPipe: redirectUnauthorizedToLogin}
     },
     children: [
       {

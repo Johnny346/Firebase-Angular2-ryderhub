@@ -19,6 +19,6 @@ import { AngularFireAuthModule }from '@angular/fire/auth';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
   ],
-  declarations: [ DashboardComponent ]
+  declarations: [ DashboardComponent ],
 })
 export class DashboardModule { }
