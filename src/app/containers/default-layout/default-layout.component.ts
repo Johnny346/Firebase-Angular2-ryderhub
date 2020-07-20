@@ -4,6 +4,9 @@ import { AuthService } from '../../core/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { map, catchError } from 'rxjs/operators';
+import { ApiserviceService } from '../../apiservice.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,8 +19,10 @@ export class DefaultLayoutComponent implements OnInit {
   private currentUser: firebase.User = null;
   
   private user: firebase.User;
- 
-  constructor(public afAuth: AngularFireAuth,private router: Router){
+  private REST_API_SERVER = "http://77.68.25.40:443/phpfiles/dashboardGetMainData.php";
+  ryderdata;
+  public testValue;
+  constructor(public afAuth: AngularFireAuth,private router: Router,public apiService: ApiserviceService){
     this.authState = this.afAuth.authState;
     this.authState.subscribe(user => {
     if (user) {
@@ -30,11 +35,12 @@ export class DefaultLayoutComponent implements OnInit {
     }
   });
 }
-
+ 
+  
   ngOnInit(): void {
     
   }
-
+   
   
   logout() {
     console.log("test function");
@@ -68,3 +74,5 @@ export class DefaultLayoutComponent implements OnInit {
     this.sidebarMinimized = e;
   }
 }
+
+

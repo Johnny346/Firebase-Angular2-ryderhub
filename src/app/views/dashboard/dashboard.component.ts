@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { ApiserviceService } from '../../apiservice.service';
 
 @Component({
   templateUrl: 'dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(public afAuth: AngularFireAuth){};
+  constructor(public afAuth: AngularFireAuth, public apiService: ApiserviceService){};
 
   radioModel: string = 'Month';
 
@@ -379,6 +380,17 @@ export class DashboardComponent implements OnInit {
   public random(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
+  public ryderdata;
+  public ryderID;
+  public totalIncome = 0;;
+  public totalHours;
+  public avgWeeklyPay;
+  public avgDailyOrders;
+  public userstartDate;
+  public DataDailyOrders;
+  public DataDailyHours;
+  public DataDailyEarnings;
+  public earliestWorkDate;
 
   ngOnInit(): void {
     this.afAuth;
@@ -388,5 +400,31 @@ export class DashboardComponent implements OnInit {
       this.mainChartData2.push(this.random(80, 100));
       this.mainChartData3.push(65);
     }
+    
+    // get user data from api
+    this.apiService.getData().subscribe((data: {}) => {
+      this.ryderdata = data;
+      //console.log("show data", this.ryderdata.id);
+      this.ryderID = this.ryderdata.id;
+      this.totalIncome = this.ryderdata.totalIncome;
+      this.totalHours = this.ryderdata.totalHours;
+      this.avgWeeklyPay = this.ryderdata.avgWeeklyPay;
+      this.avgDailyOrders = this.ryderdata.avgDailyOrders;
+      this.earliestWorkDate = this.ryderdata.earliestWorkDate;
+    })
+    
   }
 }
+
+
+interface ryderdata {
+  ryderID: string;
+  totalIncome: string;
+  totalHours: string;
+  avgWeeklyPay: string;
+  avgDailyOrders: string;
+  userstartDate: string;
+  DataDailyOrders: string;
+  DataDailyHours: string;
+  DataDailyEarnings: string;
+} 
