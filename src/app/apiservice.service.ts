@@ -3,13 +3,15 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
+import { WeatherdataObject } from './weatherdata-object';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiserviceService {
 
- 
+  public weatherData;
+  public RootObject;
   private REST_API_SERVER = "http://77.68.25.40:443/phpfiles/dashboardGetMainData.php";
   constructor(private http: HttpClient) { }
  
@@ -40,5 +42,27 @@ export class ApiserviceService {
      })
    )
        
+    }
+
+    getWeatherData(): Observable<any> {
+        /* console.log("input email "+ response.data.weather[0].description);
+        $scope.main = response.data.weather[0].main;
+        $scope.description = response.data.weather[0].description;
+        $scope.temp = response.data.main.temp;
+        $scope.windSpeed = response.data.wind.speed;
+        $scope.windDegrees = response.data.wind.deg;
+        $scope.region = response.data.sys.country;
+        //$scope.sunriseTimeSec = response.data.sys.sunrise;
+        //$scope.sunsetTimeSec = response.data.sys.sunset;
+        $scope.sunrise = getTime(response.data.sys.sunrise);
+        $scope.sunset = getTime(response.data.sys.sunset);
+        */
+      let url = 'http://api.openweathermap.org/data/2.5/weather?q=cork&units=metric&appid=781af7d05f213936961c5ad9c209242b';
+     
+      return this.http.get<WeatherdataObject>(url) 
+      .pipe(
+        map(response => {return response; })
+      
+      );
     }
 }

@@ -135,155 +135,58 @@
     <div class="card-footer">
       <div class="row text-center">
         <div class="col-sm-12 col-md mb-sm-2 mb-0">
-          <div class="text-muted">Visits</div>
-          <strong>29.703 Users (40%)</strong>
+          <div class="text-muted">Best day to & time to work</div>
+          <strong>Sunday 7pm-10pm</strong>
           <div class="progress progress-xs mt-2">
             <div class="progress-bar bg-success" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
         </div>
         <div class="col-sm-12 col-md mb-sm-2 mb-0">
-          <div class="text-muted">Unique</div>
-          <strong>24.093 Users (20%)</strong>
+          <div class="text-muted">Avg hours per week</div>
+          <strong>24 (20%)</strong>
           <div class="progress progress-xs mt-2">
             <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
         </div>
         <div class="col-sm-12 col-md mb-sm-2 mb-0">
-          <div class="text-muted">Pageviews</div>
-          <strong>78.706 Views (60%)</strong>
-          <div class="progress progress-xs mt-2">
-            <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md mb-sm-2 mb-0">
-          <div class="text-muted">New Users</div>
-          <strong>22.123 Users (80%)</strong>
+          <div class="text-muted">Avg Hourly Wage</div>
+          <strong>22 (80%)</strong>
           <div class="progress progress-xs mt-2">
             <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md mb-sm-2 mb-0">
-          <div class="text-muted">Bounce Rate</div>
-          <strong>40.15%</strong>
-          <div class="progress progress-xs mt-2">
-            <div class="progress-bar" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
         </div>
       </div>
     </div>
   </div>
   <!--/.card-->
-  <div class="row">
-    <div class="col-sm-6 col-lg-3">
-      <div class="brand-card">
-        <div class="brand-card-header bg-facebook">
-          <i class="fa fa-facebook"></i>
-          <div class="chart-wrapper">
-            <canvas baseChart class="chart"
-            [datasets]="brandBoxChartData1"
-            [labels]="brandBoxChartLabels"
-            [options]="brandBoxChartOptions"
-            [colors]="brandBoxChartColours"
-            [legend]="brandBoxChartLegend"
-            [chartType]="brandBoxChartType"></canvas>
-          </div>
+  <div>
+    <h2 style="padding:5px">Weather Information Today {{ todayDate }}</h2>
+    <hr/>
+    <div class="row" style="padding:10px">
+        <div class="col-sm-6 col-lg-6">
+          <h4>Weather condition: {{description}}</h4>
+          <h4>Tempurature: {{temp}} Celcius</h4>
+          <h4>Wind Speed: {{windSpeed}} m/s</h4>
+          <h4>Wind direction: {{windDegrees}}</h4>
         </div>
-        <div class="brand-card-body">
-          <div>
-            <div class="text-value">89k</div>
-            <div class="text-uppercase text-muted small">friends</div>
-          </div>
-          <div>
-            <div class="text-value">459</div>
-            <div class="text-uppercase text-muted small">feeds</div>
-          </div>
+        <div class="col-sm-6 col-lg-6">
+            <h4>Region: {{region}}</h4>
+            <h4>Sunset: {{sunset}} pm</h4>
+            <h4>Sunrise: {{sunrise}} am</h4>
+            <button type="button" title="Get weather data" (click)="getWeatherData()"class="btn btn-primary float-left">
+                <i class="icon-cloud-download"></i>
+            </button>
         </div>
       </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-lg-3">
-      <div class="brand-card">
-        <div class="brand-card-header bg-twitter">
-          <i class="fa fa-twitter"></i>
-          <div class="chart-wrapper">
-            <canvas baseChart class="chart"
-            [datasets]="brandBoxChartData2"
-            [labels]="brandBoxChartLabels"
-            [options]="brandBoxChartOptions"
-            [colors]="brandBoxChartColours"
-            [legend]="brandBoxChartLegend"
-            [chartType]="brandBoxChartType"></canvas>
-          </div>
-        </div>
-        <div class="brand-card-body">
-          <div>
-            <div class="text-value">973k</div>
-            <div class="text-uppercase text-muted small">followers</div>
-          </div>
-          <div>
-            <div class="text-value">1.792</div>
-            <div class="text-uppercase text-muted small">tweets</div>
-          </div>
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-lg-3">
-      <div class="brand-card">
-        <div class="brand-card-header bg-linkedin">
-          <i class="fa fa-linkedin"></i>
-          <div class="chart-wrapper">
-            <canvas baseChart class="chart"
-            [datasets]="brandBoxChartData3"
-            [labels]="brandBoxChartLabels"
-            [options]="brandBoxChartOptions"
-            [colors]="brandBoxChartColours"
-            [legend]="brandBoxChartLegend"
-            [chartType]="brandBoxChartType"></canvas>
-          </div>
-        </div>
-        <div class="brand-card-body">
-          <div>
-            <div class="text-value">500+</div>
-            <div class="text-uppercase text-muted small">contacts</div>
-          </div>
-          <div>
-            <div class="text-value">292</div>
-            <div class="text-uppercase text-muted small">feeds</div>
-          </div>
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-lg-3">
-      <div class="brand-card">
-        <div class="brand-card-header bg-google-plus">
-          <i class="fa fa-google-plus"></i>
-          <div class="chart-wrapper">
-            <canvas baseChart class="chart"
-            [datasets]="brandBoxChartData4"
-            [labels]="brandBoxChartLabels"
-            [options]="brandBoxChartOptions"
-            [colors]="brandBoxChartColours"
-            [legend]="brandBoxChartLegend"
-            [chartType]="brandBoxChartType"></canvas>
-          </div>
-        </div>
-        <div class="brand-card-body">
-          <div>
-            <div class="text-value">894</div>
-            <div class="text-uppercase text-muted small">followers</div>
-          </div>
-          <div>
-            <div class="text-value">92</div>
-            <div class="text-uppercase text-muted small">circles</div>
-          </div>
-        </div>
-      </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
+      <hr/>
+ </div>
+ 
+ 
   <div class="row">
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          Traffic &amp; Sales
+          <h4>Daily Analysis</h4>
         </div>
         <div class="card-body">
           <div class="row">
@@ -291,20 +194,33 @@
               <div class="row">
                 <div class="col-sm-6">
                   <div class="callout callout-info">
-                    <small class="text-muted">New Clients</small>
+                    <small class="text-muted">Average Daily Hours</small>
                     <br>
-                    <strong class="h4">9,123</strong>
+                    <strong class="h4">12</strong>
                   </div>
                 </div><!--/.col-->
                 <div class="col-sm-6">
                   <div class="callout callout-danger">
-                    <small class="text-muted">Recuring Clients</small>
+                    <small class="text-muted">Max Hours</small>
                     <br>
-                    <strong class="h4">22,643</strong>
+                    <strong class="h4">22</strong>
                   </div>
                 </div><!--/.col-->
               </div><!--/.row-->
               <hr class="mt-0">
+              <div class="progress-group-bars"> 
+                Average Orders
+                <div class="progress progress-xs">
+                  <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <div class="progress-group-bars"> 
+                 Avergae Earnings
+                 <div class="progress progress-xs">
+                  <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <hr/>
               <div class="progress-group mb-4">
                 <div class="progress-group-prepend">
                   <span class="progress-group-text">
@@ -314,6 +230,7 @@
                 <div class="progress-group-bars">
                   <div class="progress progress-xs">
                     <div class="progress-bar bg-info" role="progressbar" style="width: 34%" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
+                    
                   </div>
                   <div class="progress progress-xs">
                     <div class="progress-bar bg-danger" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
@@ -415,17 +332,13 @@
               <div class="row">
                 <div class="col-sm-6">
                   <div class="callout callout-warning">
-                    <small class="text-muted">Pageviews</small>
+                    <small class="text-muted">Min Daily Hours</small>
                     <br>
-                    <strong class="h4">78,623</strong>
+                    <strong class="h4">2</strong>
                   </div>
                 </div><!--/.col-->
                 <div class="col-sm-6">
-                  <div class="callout callout-success">
-                    <small class="text-muted">Organic</small>
-                    <br>
-                    <strong class="h4">49,123</strong>
-                  </div>
+                  
                 </div><!--/.col-->
               </div><!--/.row-->
               <hr class="mt-0">
