@@ -400,19 +400,20 @@ export class DashboardComponent implements OnInit {
       this.mainChartData2.push(this.random(80, 100));
       this.mainChartData3.push(65);
     }
-    
-    // get user data from api
-    this.apiService.getData().subscribe((data: {}) => {
+      var userEmail = localStorage.getItem('userEmail');
+      
+      // get user data from api
+      this.apiService.getData(userEmail).subscribe((data: {}) => {
       this.ryderdata = data;
       //console.log("show data", this.ryderdata.id);
       this.ryderID = this.ryderdata.id;
+      localStorage.setItem("ryderID",this.ryderID);
       this.totalIncome = this.ryderdata.totalIncome;
       this.totalHours = this.ryderdata.totalHours;
       this.avgWeeklyPay = this.ryderdata.avgWeeklyPay;
       this.avgDailyOrders = this.ryderdata.avgDailyOrders;
       this.earliestWorkDate = this.ryderdata.earliestWorkDate;
     })
-    
   }
 }
 

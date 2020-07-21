@@ -20,11 +20,14 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     const [ email, password, firstname, ryderid, lastname ] = form.value;
     let resp;
+    localStorage.setItem("userEmail",form.value.email);
+    localStorage.setItem("userLoggedIn","true");
     try {
       //console.log(form.value);
       resp = await this.afAuth.signInWithEmailAndPassword(form.value.email, form.value.password);
       await resp.user.updateProfile({ displayName: form.value.email})
       form.reset();
+      
       this.router.navigate(['/dashboard']);
     } catch (error) {
       console.log(error.message);

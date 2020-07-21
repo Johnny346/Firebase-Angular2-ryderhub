@@ -27,9 +27,9 @@ export class DefaultLayoutComponent implements OnInit {
     this.authState.subscribe(user => {
     if (user) {
       this.currentUser = user;
-      console.log('AUTHSTATE USER----', user.displayName)
+      console.log('AUTHSTATE USER----', user.displayName);
     } else {
-      console.log('AUTHSTATE USER EMPTY', user)
+      console.log('AUTHSTATE USER EMPTY', user);
       this.currentUser = null;
       this.router.navigate(['/login']);
     }
@@ -40,7 +40,10 @@ export class DefaultLayoutComponent implements OnInit {
   ngOnInit(): void {
     
   }
-   
+  deleteLocalStorage() {
+    // Clear all items
+    localStorage.clear();
+  }
   
   logout() {
     console.log("test function");
@@ -56,9 +59,9 @@ export class DefaultLayoutComponent implements OnInit {
         this.authState.subscribe(user => {
           if (user) {
             this.currentUser = user;
-            console.log('AUTHSTATE USER----', user.displayName)
+            console.log('AUTHSTATE USER----', user.displayName);
           } else {
-            console.log('AUTHSTATE USER EMPTY', user)
+            console.log('AUTHSTATE USER EMPTY', user);
             this.currentUser = null;
             this.router.navigate(['/login']);
           }

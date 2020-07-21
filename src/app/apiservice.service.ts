@@ -13,21 +13,18 @@ export class ApiserviceService {
   private REST_API_SERVER = "http://77.68.25.40:443/phpfiles/dashboardGetMainData.php";
   constructor(private http: HttpClient) { }
  
-  getData(): Observable<any> { 
+  getData(userEmail): Observable<any> { 
     // Http Headers
     const httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded'
     })}
   const params = new HttpParams({
-    fromString: 'email=johnmulcahy346@gmail.com'
+    fromString: 'email='+userEmail
   });
   var formData = new FormData();
-  formData.set('email=', 'johnmulcahy346@gmail.com');
-    //console.log("push button");
-    let _urlParams = new URLSearchParams();
-    _urlParams.append('email=', 'johnmulcahy346@gmail.com');
-    
+  formData.set('email=', '');
+   
     return this.http.post<any>(this.REST_API_SERVER ,
       params
       , httpOptions)

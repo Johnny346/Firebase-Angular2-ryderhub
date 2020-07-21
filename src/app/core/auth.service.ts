@@ -17,9 +17,9 @@ export class AuthService {
     this.authState.subscribe(user => {
     if (user) {
       this.currentUser = user;
-      console.log('AUTHSTATE USER----', user.displayName)
+      console.log('AUTHSTATE USER----', user.displayName);
     } else {
-      console.log('AUTHSTATE USER EMPTY', user)
+      console.log('AUTHSTATE USER EMPTY', user);
       this.currentUser = null;
     }
   });
@@ -37,10 +37,10 @@ export class AuthService {
     this.authState.subscribe(user => {
       if (user) {
         this.currentUser = user;
-        console.log('AUTHSTATE USER----', user.displayName)
+        console.log('AUTHSTATE USER----', user.displayName);
         return this.currentUser;
       } else {
-        console.log('AUTHSTATE USER EMPTY', user)
+        console.log('AUTHSTATE USER EMPTY', user);
         this.currentUser = null;
         return this.currentUser;
       }
