@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 import { WeatherdataObject } from './weatherdata-object';
-
+import { IDtokenWeatherApp } from '../../../token';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +13,7 @@ export class ApiserviceService {
   public weatherData;
   public RootObject;
   private REST_API_SERVER = "http://77.68.25.40:443/phpfiles/dashboardGetMainData.php";
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private IDtokenWeatherApp: IDtokenWeatherApp) { }
  
   getData(userEmail): Observable<any> { 
     // Http Headers
@@ -57,7 +57,10 @@ export class ApiserviceService {
         $scope.sunrise = getTime(response.data.sys.sunrise);
         $scope.sunset = getTime(response.data.sys.sunset);
         */
-      let url = 'http://api.openweathermap.org/data/2.5/weather?q=cork&units=metric&appid=781af7d05f213936961c5ad9c209242b';
+       
+       let id = new IDtokenWeatherApp();
+       
+      let url = 'http://api.openweathermap.org/data/2.5/weather?q=cork&units=metric&appid='+id.id;
      
       return this.http.get<WeatherdataObject>(url) 
       .pipe(

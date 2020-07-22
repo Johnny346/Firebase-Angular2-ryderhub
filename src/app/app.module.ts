@@ -6,7 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { IDtokenWeatherApp } from '../../../token';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -83,6 +84,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
   ],
   providers: [
     AngularFireAuthGuardModule,
+    IDtokenWeatherApp,
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy
