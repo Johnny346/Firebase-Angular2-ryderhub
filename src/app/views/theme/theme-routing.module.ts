@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ColorsComponent } from './colors.component';
 import { TypographyComponent } from './typography.component';
-
+import { UploadinvoiceComponent } from './uploadinvoice/uploadinvoice.component'
 const routes: Routes = [
   {
     path: '',
@@ -27,6 +27,13 @@ const routes: Routes = [
         component: TypographyComponent,
         data: {
           title: 'Typography'
+        }
+      },
+      {
+        path: 'upload',
+        component: UploadinvoiceComponent,
+        data: {
+          title: 'Upload Invoice'
         }
       }
     ]

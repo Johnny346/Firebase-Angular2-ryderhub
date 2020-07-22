@@ -382,15 +382,15 @@ export class DashboardComponent implements OnInit {
   }
   public ryderdata;
   public ryderID;
-  public totalIncome = 0;;
-  public totalHours;
-  public avgWeeklyPay;
-  public avgDailyOrders;
-  public userstartDate;
-  public DataDailyOrders;
-  public DataDailyHours;
-  public DataDailyEarnings;
-  public earliestWorkDate;
+  public totalIncome = 0;
+  public totalHours = 0;
+  public avgWeeklyPay = 0;
+  public avgDailyOrders = 0;
+  public userstartDate = 0;
+  public DataDailyOrders = 0;
+  public DataDailyHours = 0;
+  public DataDailyEarnings = 0;
+  public earliestWorkDate = 0;
 
   public weatherData;
   public description;

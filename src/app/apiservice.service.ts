@@ -17,47 +17,34 @@ export class ApiserviceService {
  
   getData(userEmail): Observable<any> { 
     // Http Headers
-    const httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded'
-    })}
-  const params = new HttpParams({
-    fromString: 'email='+userEmail
-  });
-  var formData = new FormData();
-  formData.set('email=', '');
-   
-    return this.http.post<any>(this.REST_API_SERVER ,
-      params
-      , httpOptions)
-    .pipe(
-      map((data) => {
-        //You can perform some transformation here
-        //console.log("data ", data);
-       return data;
-     }),
-     catchError((err) => {
-       console.error("error in service",err);
-       throw err;
-     })
-   )
+        const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/x-www-form-urlencoded'
+        })}
+      const params = new HttpParams({
+        fromString: 'email='+userEmail
+      });
+      var formData = new FormData();
+      formData.set('email=', '');
+      
+        return this.http.post<any>(this.REST_API_SERVER ,
+          params
+          , httpOptions)
+        .pipe(
+          map((data) => {
+            //You can perform some transformation here
+            //console.log("data ", data);
+          return data;
+        }),
+        catchError((err) => {
+          console.error("error in service",err);
+          throw err;
+        })
+      )
        
     }
 
     getWeatherData(): Observable<any> {
-        /* console.log("input email "+ response.data.weather[0].description);
-        $scope.main = response.data.weather[0].main;
-        $scope.description = response.data.weather[0].description;
-        $scope.temp = response.data.main.temp;
-        $scope.windSpeed = response.data.wind.speed;
-        $scope.windDegrees = response.data.wind.deg;
-        $scope.region = response.data.sys.country;
-        //$scope.sunriseTimeSec = response.data.sys.sunrise;
-        //$scope.sunsetTimeSec = response.data.sys.sunset;
-        $scope.sunrise = getTime(response.data.sys.sunrise);
-        $scope.sunset = getTime(response.data.sys.sunset);
-        */
-       
        let id = new IDtokenWeatherApp();
        
       let url = 'http://api.openweathermap.org/data/2.5/weather?q=cork&units=metric&appid='+id.id;
@@ -68,4 +55,29 @@ export class ApiserviceService {
       
       );
     }
+
+    // post invoice files
+    postInvoiceFiles(formData): Observable<any> { 
+      let url= 'http://77.68.25.40:443/phpfiles/upload.php'; // point to server-side PHP script 
+      // Http Headers
+      const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded'
+      })}
+      return this.http.post<any>(url,
+        formData
+        )
+      .pipe(
+        map((data) => {
+          //You can perform some transformation here
+          //console.log("data ", data);
+         return data;
+       }),
+       catchError((err) => {
+         console.error("error in service",err);
+         throw err;
+       })
+     )
+         
+      }
 }

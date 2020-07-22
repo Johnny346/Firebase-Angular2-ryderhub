@@ -12,7 +12,7 @@ export const navItems: INavData[] = [
   },
   {
     title: true,
-    name: 'Theme'
+    name: 'Upload'
   },
   {
     name: 'Colors',
@@ -20,8 +20,8 @@ export const navItems: INavData[] = [
     icon: 'icon-drop'
   },
   {
-    name: 'Typography',
-    url: '/theme/typography',
+    name: 'Invoices',
+    url: '/theme/upload',
     icon: 'icon-pencil'
   },
   {
