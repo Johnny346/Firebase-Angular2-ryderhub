@@ -80,4 +80,39 @@ export class ApiserviceService {
      )
          
       }
+
+      registerUser(registerUser): Observable<any> {
+        let url = 'http://77.68.25.40:443/phpfiles/serverRegisterUser.php';
+        let name = registerUser.firstname + " " + registerUser.lastname;
+      
+
+        const httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/x-www-form-urlencoded'
+          })}
+          
+        const params = new HttpParams({
+          fromString: 'ryderid='+registerUser.ryderid
+        +'&email='+ registerUser.email
+        +'&name='+ name
+        +'&city='+ registerUser.city
+        +'&password='+ registerUser.password
+        });
+      
+          return this.http.post<any>(url,
+            params
+            , httpOptions)
+          .pipe(
+            map((data) => {
+              //You can perform some transformation here
+              //console.log("data ", data);
+            return data;
+          }),
+          catchError((err) => {
+            console.error("error in service",err);
+            throw err;
+          })
+        )
+      }
+   
 }

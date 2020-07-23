@@ -10,10 +10,15 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   loading= false;
+  public message;
   constructor(private afAuth: AngularFireAuth, private router: Router) { };
   error:string;
 
   ngOnInit(): void {
+    let boolRegistered = localStorage.getItem('registeredStatus');
+    if(boolRegistered){
+      this.message = "Welcome you are now signed up :)"
+    }
   }
   async onSubmit(form: NgForm){
     this.error = null;

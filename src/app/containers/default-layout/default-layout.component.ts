@@ -48,6 +48,7 @@ export class DefaultLayoutComponent implements OnInit {
   logout() {
     console.log("test function");
     this.afAuth.signOut();
+    this.deleteLocalStorage();
   }
 
   isLoggedIn() {
