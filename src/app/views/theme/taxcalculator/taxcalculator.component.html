@@ -1,0 +1,61 @@
+ <!-- start tax calc card -->
+ <div class="card">
+    <div class="card-header" id="headingOne">
+        <div>
+            <h3>Tax Calculator</h3>
+        </div>
+    </div>
+    <div class="row" style="padding: 12px">
+        <div class="col-sm-6 col-lg-6">
+            <h5>Start Date: {{ userstartDate}} </h5>
+           
+            <h5>End Date: {{ userLastDate}} </h5>
+           <hr/>
+	
+          <h4 class="mb-0">Total Income: {{totalIncome }}</h4>
+	          <br/>
+            <h5>Income Tax: {{incomeTax }}</h5>
+            <br/>
+            <h5>USC: {{usc   }}</h5>
+            <br/>
+            <h5>PRSI: {{prsi  }}</h5>
+            <br/>
+            <h5>Total Tax to pay:<span style="text-decoration: underline"></span> </h5>
+	          <hr/>
+        </div>
+        <div class="col-sm-6 col-lg-6">
+		        <h3>Self Employed Tax Information</h3>
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseIdA" aria-expanded="true" aria-controls="collapseIdA">
+                <h4>USC Info</h4>
+            </button>
+            <div >
+                <div>
+                    USC is a tax you pay on your gross income. Everyone earning over 13,000 (2016, 2017) gross income is liable to pay USC.
+                </div>
+            </div>
+	          <br/>
+            <hr/>
+	          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseIdB" aria-expanded="true" aria-controls="collapseIdB">
+                <h4>PRSI Info</h4>
+            </button>
+            <div >
+                <div >
+                    PRSI contributions are paid at
+                     a rate of 4% on all income
+                </div>
+            </div>
+	          <br/>
+            <hr/>
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseIdC" aria-expanded="true" aria-controls="collapseIdC">
+                <h4>Income Tax Info</h4>
+            </button>
+            <div >
+                <div >
+                    Income Tax is paid: 20% for income upto 33,800 & 40% for income above 33,800
+                </div>
+            </div> 
+        </div>
+    </div>
+    
+</div>
+<!-- end tax calc card -->

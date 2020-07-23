@@ -9,6 +9,10 @@ import { ApiserviceService } from '../../apiservice.service';
 import { ThemeRoutingModule } from './theme-routing.module';
 import { UploadinvoiceComponent } from './uploadinvoice/uploadinvoice.component';
 import { FormsModule } from '@angular/forms';
+import { RoadclosuresComponent } from './roadclosures/roadclosures.component';
+import { TaxcalculatorComponent } from './taxcalculator/taxcalculator.component';
+import { ProfileComponent } from './profile/profile.component';
+import { WeatherinfoComponent } from './weatherinfo/weatherinfo.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -18,7 +22,11 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     ColorsComponent,
     TypographyComponent,
-    UploadinvoiceComponent
+    UploadinvoiceComponent,
+    RoadclosuresComponent,
+    TaxcalculatorComponent,
+    ProfileComponent,
+    WeatherinfoComponent
   ],
   providers: [
     ApiserviceService

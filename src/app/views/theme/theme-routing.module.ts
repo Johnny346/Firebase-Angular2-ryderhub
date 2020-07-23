@@ -3,12 +3,17 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ColorsComponent } from './colors.component';
 import { TypographyComponent } from './typography.component';
-import { UploadinvoiceComponent } from './uploadinvoice/uploadinvoice.component'
+import { UploadinvoiceComponent } from './uploadinvoice/uploadinvoice.component';
+import { RoadclosuresComponent } from './roadclosures/roadclosures.component';
+import { TaxcalculatorComponent } from './taxcalculator/taxcalculator.component';
+import { WeatherinfoComponent } from './weatherinfo/weatherinfo.component';
+import { ProfileComponent } from './profile/profile.component';
+
 const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Theme'
+      title: 'Dashboard'
     },
     children: [
       {
@@ -16,17 +21,31 @@ const routes: Routes = [
         redirectTo: 'colors'
       },
       {
-        path: 'colors',
-        component: ColorsComponent,
+        path: 'taxcalculator',
+        component: TaxcalculatorComponent,
         data: {
-          title: 'Colors'
+          title: 'Tax Calculator'
         }
       },
       {
-        path: 'typography',
-        component: TypographyComponent,
+        path: 'road-closures',
+        component: RoadclosuresComponent,
         data: {
-          title: 'Typography'
+          title: 'Road closures'
+        }
+      },
+      {
+        path: 'weatherinfo',
+        component: WeatherinfoComponent,
+        data: {
+          title: 'Weather Info'
+        }
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+        data: {
+          title: 'Profile'
         }
       },
       {

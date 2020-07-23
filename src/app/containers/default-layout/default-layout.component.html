@@ -4,33 +4,27 @@
   [navbarBrandFull]="{src: 'assets/img/brand/logo.png', width: 89, height: 25, alt: 'CoreUI Logo'}"
   [navbarBrandMinimized]="{src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'CoreUI Logo'}"
   [sidebarToggler]="'lg'"
-  [asideMenuToggler]="'lg'" >
+  [asideMenuToggler]="''" 
+  [mobileAsideMenuToggler]="false"
+  >
   <ul class="nav navbar-nav d-md-down-none">
-    <li class="nav-item px-3">
-      <a class="nav-link" href="#">Dashboard</a>
-    </li>
-    <li class="nav-item px-3">
-      <a class="nav-link" href="#">Users</a>
-    </li>
-    <li class="nav-item px-3" >
-      <a class="nav-link" href="#">Settings</a>
-    </li>
-    <li>
-      <button type="button" (click)="logout()" >Logout</button>
-    </li>
+    
     <li *ngIf="afAuth.user | async as user">
-      <span style="padding:5px">{{ user.displayName }}</span>
+      <span style="padding:5px">Signed in: {{ user.displayName }}</span>
     </li>
   </ul>
   <ul class="nav navbar-nav ml-auto">
-    <li class="nav-item d-md-down-none">
-      <a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
+    <li>
+      <button type="button" (click)="logout()" >Logout</button>
     </li>
     <li class="nav-item d-md-down-none">
-      <a class="nav-link" href="#"><i class="icon-list"></i></a>
+      <a class="nav-link" ><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
     </li>
     <li class="nav-item d-md-down-none">
-      <a class="nav-link" href="#"><i class="icon-location-pin"></i></a>
+      <a class="nav-link"><i class="icon-list"></i></a>
+    </li>
+    <li class="nav-item d-md-down-none">
+      <a class="nav-link" ><i class="icon-location-pin"></i></a>
     </li>
     <li class="nav-item dropdown" dropdown placement="bottom right">
       <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
@@ -68,9 +62,9 @@
       <!-- Breadcrumb Menu-->
       <li class="breadcrumb-menu d-md-down-none">
         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-          <a class="btn" href="#"><i class="icon-speech"></i></a>
+          <a class="btn" ><i class="icon-speech"></i></a>
           <a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a>
-          <a class="btn" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>
+          <a class="btn" ><i class="icon-settings"></i> &nbsp;Settings</a>
         </div>
       </li>
     </cui-breadcrumb>
@@ -90,7 +84,7 @@
       <router-outlet></router-outlet>
     </div><!-- /.container-fluid -->
   </main>
-  <app-aside [fixed]="true" [display]="false" [ngClass]="'test'">
+  <!--<app-aside [fixed]="true" [display]="false" [ngClass]="'test'">
     <tabset>
       <tab>
         <ng-template tabHeading><i class="icon-list"></i></ng-template>
@@ -341,8 +335,9 @@
       </tab>
     </tabset>
   </app-aside>
+-->
 </div>
 <app-footer>
-  <span><a href="https://coreui.io">CoreUI</a> &copy; 2018 creativeLabs.</span>
+  <span><a >MyRyderHub</a> &copy; 2020 JM Designs</span>
   <span class="ml-auto">Powered by <a href="https://coreui.io/angular">CoreUI for Angular</a></span>
 </app-footer>

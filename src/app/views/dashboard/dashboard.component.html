@@ -159,27 +159,7 @@
     </div>
   </div>
   <!--/.card-->
-  <div>
-    <h2 style="padding:5px">Weather Information Today {{ todayDate }}</h2>
-    <hr/>
-    <div class="row" style="padding:10px">
-        <div class="col-sm-6 col-lg-6">
-          <h4>Weather condition: {{description}}</h4>
-          <h4>Tempurature: {{temp}} Celcius</h4>
-          <h4>Wind Speed: {{windSpeed}} m/s</h4>
-          <h4>Wind direction: {{windDegrees}}</h4>
-        </div>
-        <div class="col-sm-6 col-lg-6">
-            <h4>Region: {{region}}</h4>
-            <h4>Sunset: {{sunset}} pm</h4>
-            <h4>Sunrise: {{sunrise}} am</h4>
-            <button type="button" title="Get weather data" (click)="getWeatherData()"class="btn btn-primary float-left">
-                <i class="icon-cloud-download"></i>
-            </button>
-        </div>
-      </div>
-      <hr/>
- </div>
+
  
  
   <div class="row">
@@ -662,4 +642,6 @@
       </div>
     </div><!--/.col-->
   </div><!--/.row-->
+ 
+
 </div>
