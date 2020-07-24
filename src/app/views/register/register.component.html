@@ -10,7 +10,7 @@
               
               <form #form="ngForm" (submit)="onSubmit(form)" [class.loading]="loading">
                 <div>
-                <img src="assets/img/drawing2.png" height="70" width="220" alt="logo" />
+                  <a routerLink="../home"><img src="assets/img/drawing2.png" height="70" width="220" alt="logo" /></a>
               </div>
                 <h1>Register</h1>
                 <p class="text-muted">Create your account</p>
@@ -44,6 +44,7 @@
                   </div>
                   <input type="email" class="form-control" name="email" placeholder="Email" autocomplete="email" required ngModel>
                 </div>
+                <p>Make sure it's at least 8 characters including a number and a lowercase letter. </p>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="icon-lock"></i></span>
@@ -58,6 +59,7 @@
                 </div>
                 <button type="submit" value="Submit" class="btn btn-block btn-success">Create Account</button>
                 <h4> {{ status }}</h4>
+                <p>By clicking “Create Account for Myryderhub”, you agree to our <a routerLink="../terms-conditions">Terms of Service and Privacy Statement</a>. We’ll occasionally send you account related emails.</p>
               </form>
             </div>
             <!--<div class="card-footer p-4">
