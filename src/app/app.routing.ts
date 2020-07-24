@@ -11,6 +11,8 @@ import { RegisterComponent } from './views/register/register.component';
 import { AngularFireAuthGuardModule, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from './core/auth.service';
+import { TermsconditionsComponent } from './termsconditions/termsconditions.component';
+
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
  
 export const routes: Routes = [
@@ -46,6 +48,13 @@ export const routes: Routes = [
     component: LoginComponent,
     data: {
       title: 'Login Page'
+    }
+  },
+  {
+    path: 'terms-conditions',
+    component: TermsconditionsComponent,
+    data: {
+      title: 'terms-conditions Page'
     }
   },
   {

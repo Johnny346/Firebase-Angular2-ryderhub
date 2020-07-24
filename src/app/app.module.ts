@@ -50,6 +50,7 @@ import { LandingpageComponent } from "./landingpage/landingpage.component";
 import {AfterViewChecked, Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {CollapseDirective} from 'ngx-bootstrap/collapse';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { TermsconditionsComponent } from './termsconditions/termsconditions.component';
 
 @NgModule({
   imports: [
@@ -79,7 +80,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     LoginComponent,
     RegisterComponent,
     LandingpageComponent,
-    CollapseDirective
+    CollapseDirective,
+    TermsconditionsComponent
     
   ],
   providers: [
