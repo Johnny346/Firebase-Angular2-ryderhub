@@ -38,10 +38,10 @@ export const navItems: INavData[] = [
     name: 'Profile',
     url: '/theme/profile',
     icon: 'icon-user'
-  },
+  }/*,
   {
     name: 'Charts',
     url: '/charts',
     icon: 'icon-pie-chart'
-  }
+  }*/
 ];
