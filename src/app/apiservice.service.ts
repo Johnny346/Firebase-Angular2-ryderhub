@@ -44,6 +44,37 @@ export class ApiserviceService {
        
     }
 
+    getUpdatedData(userEmail,finishDate,startDate): Observable<any> {
+      let url= 'http://77.68.25.40:443/phpfiles/dashboardGetUpdatedMainData.php';
+      var endDate = finishDate.getFullYear() + "-" + (finishDate.getMonth()+1)
+        + "-" + finishDate.getDate();
+      startDate = startDate.getFullYear() + "-" + (startDate.getMonth()+1)
+      + "-" + startDate.getDate();
+      console.log("userchart startdate " +startDate);
+      console.log("userchart finishdate " +endDate);
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/x-www-form-urlencoded'
+        })}
+      const params = new HttpParams({
+        fromString: 'email='+userEmail+'&endDate='+endDate+'&startDate='+startDate
+      });
+      return this.http.post<any>(url,
+        params
+        , httpOptions)
+      .pipe(
+        map((data) => {
+          //You can perform some transformation here
+          //console.log("data ", data);
+        return data;
+      }),
+      catchError((err) => {
+        console.error("error in service",err);
+        throw err;
+      })
+    )
+    }
+
     getWeatherData(): Observable<any> {
        let id = new IDtokenWeatherApp();
        

@@ -215,7 +215,7 @@ export class DashboardComponent implements OnInit {
 
   // mainChart
 
-  public mainChartElements = 27;
+  public mainChartElements = 500;
   public mainChartData1: Array<number> = [];
   public mainChartData2: Array<number> = [];
   public mainChartData3: Array<number> = [];
@@ -223,19 +223,20 @@ export class DashboardComponent implements OnInit {
   public mainChartData: Array<any> = [
     {
       data: this.mainChartData1,
-      label: 'Current'
+      label: 'Orders'
     },
     {
       data: this.mainChartData2,
-      label: 'Previous'
+      label: 'Hours'
     },
     {
       data: this.mainChartData3,
-      label: 'BEP'
+      label: 'Earnings'
     }
   ];
   /* tslint:disable:max-line-length */
   public mainChartLabels: Array<any> = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Thursday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  
   /* tslint:enable:max-line-length */
   public mainChartOptions: any = {
     tooltips: {
@@ -267,8 +268,8 @@ export class DashboardComponent implements OnInit {
         ticks: {
           beginAtZero: true,
           maxTicksLimit: 5,
-          stepSize: Math.ceil(250 / 5),
-          max: 250
+          stepSize: Math.ceil(150 / 3),
+          max: 130
         }
       }]
     },
@@ -387,11 +388,12 @@ export class DashboardComponent implements OnInit {
   public avgWeeklyPay = 0;
   public avgDailyOrders = 0;
   public userstartDate = 0;
-  public DataDailyOrders = 0;
-  public DataDailyHours = 0;
-  public DataDailyEarnings = 0;
-  public earliestWorkDate = 0;
-
+  public DataDailyOrders;
+  public dataDailyOrders;
+  public DataDailyHours;
+  public DataDailyEarnings;
+  public earliestWorkDate;
+  public newestWorkDate;
   public weatherData;
   public description;
   public products;
@@ -404,17 +406,10 @@ export class DashboardComponent implements OnInit {
   public sunrise;
   public weatherdata:WeatherdataObject  =  <WeatherdataObject>{};
   public todayDate;
+  public WeeklyOrder;
+  
   ngOnInit(): void {
-    
-    this.afAuth;
-    // generate random values for mainChart
-    for (let i = 0; i <= this.mainChartElements; i++) {
-      this.mainChartData1.push(this.random(50, 200));
-      this.mainChartData2.push(this.random(80, 100));
-      this.mainChartData3.push(65);
-    }
       var userEmail = localStorage.getItem('userEmail');
-
       // get user data from api
       this.apiService.getData(userEmail).subscribe((data: {}) => {
       this.ryderdata = data;
@@ -426,12 +421,90 @@ export class DashboardComponent implements OnInit {
       this.avgWeeklyPay = this.ryderdata.avgWeeklyPay;
       this.avgDailyOrders = this.ryderdata.avgDailyOrders;
       this.earliestWorkDate = this.ryderdata.earliestWorkDate;
+      this.newestWorkDate = this.ryderdata.newestWorkDate;
+      this.dataDailyOrders = this.ryderdata.DataDailyOrders;
+      this.DataDailyHours = this.ryderdata.DataDailyHours;
+      this.DataDailyEarnings = this.ryderdata.DataDailyEarnings;
+      //console.log("show this.newestWorkDate",  this.DataDailyOrders.length);
+     // generate random values for mainChart
+     
+     //console.log("show this.newestWorkDate",this.dataDailyOrders[33].weeklyOrders[0]);
+    for (let i = 0; i <= this.dataDailyOrders.length; i++) {
+        try{
+          this.mainChartData1.push(this.dataDailyOrders[i].weeklyOrders);
+          this.mainChartData2.push(this.DataDailyHours[i].hours);
+          this.mainChartData3.push(this.DataDailyEarnings[i].pay);
+          //console.log("show this.newestWorkDate", this.dataDailyOrders[i].weeklyOrders);
+        }catch(error){
+
+        } 
+      }
     })
+   
+  }
+  getUpdatedData(){
+    
+    var userEmail = localStorage.getItem('userEmail');
+    var ed = new Date(this.earliestWorkDate);
+    var nd = new Date(this.newestWorkDate);
+    console.log("button clicked ", nd.getFullYear());
+    this.apiService.getUpdatedData(userEmail,nd,ed).subscribe((data: {}) => {
+      this.ryderdata = data;
+      //console.log("show data", this.ryderdata.id);
+      this.ryderID = this.ryderdata.id;
+      localStorage.setItem("ryderID",this.ryderID);
+      this.totalIncome = this.ryderdata.totalIncome;
+      this.totalHours = this.ryderdata.totalHours;
+      this.avgWeeklyPay = this.ryderdata.avgWeeklyPay;
+      this.avgDailyOrders = this.ryderdata.avgDailyOrders;
+      this.earliestWorkDate = this.ryderdata.earliestWorkDate;
+      this.newestWorkDate = this.ryderdata.newestWorkDate;
+      this.dataDailyOrders = this.ryderdata.DataDailyOrders;
+      this.DataDailyHours = this.ryderdata.DataDailyHours;
+      this.DataDailyEarnings = this.ryderdata.DataDailyEarnings;
+      //console.log("show this.newestWorkDate",  this.DataDailyOrders.length);
+     // generate random values for mainChart
+     
+     //console.log("show this.newestWorkDate",this.dataDailyOrders[33].weeklyOrders[0]);
+     
+     try{ 
+      for (let i = 0; i <= this.dataDailyOrders.length; i++) {
+        this.mainChartData1.push(this.dataDailyOrders[i].weeklyOrders);
+        this.mainChartData2.push(this.DataDailyHours[i].hours);
+        this.mainChartData3.push(this.DataDailyEarnings[i].pay);
+        //console.log("show this.newestWorkDate", this.dataDailyOrders[i].weeklyOrders);
+      }
+   
+    console.log("show ", typeof(this.mainChartData1));
+    }catch(error){
+
+        } 
+    })
+    this.updateChart(this.mainChartData1,this.mainChartData2,this.mainChartData3);
   }
 
+  updateChart(orders,hours,earnings){
+    this.mainChartData1 = [];
+    this.mainChartData2 = [];
+    this.mainChartData3 = [];
+    console.log("show lnt", orders.length);
+    this.mainChartLabels = [];
+    for (let i = 0; i <= orders.length; i++) {
+      //console.log("show lnt", i);
+      this.mainChartLabels.push("d");
+    }
+        setTimeout(() => {
+              
+              this.mainChartData= [
+            {data: [], label: ''},
+            {data: orders, label: 'Orders'},
+            {data: hours, label: 'Hours'},
+            {data: earnings, label: 'Earnings'},
+            
+            ];
+        }, 0)
+  }
   getWeatherData(){
-    
-  
     this.apiService.getWeatherData().subscribe((data: {}) => {
       this.RootObject = data;
      this.description = this.RootObject.weather[0].description;
@@ -526,7 +599,24 @@ interface ryderdata {
   avgWeeklyPay: string;
   avgDailyOrders: string;
   userstartDate: string;
-  DataDailyOrders: string;
-  DataDailyHours: string;
-  DataDailyEarnings: string;
+  newestWorkDate: string;
+  DataDailyOrders: dataDailyOrders[];
+  DataDailyHours: [];
+  DataDailyEarnings: [];
 } 
+
+interface dataDailyOrders {
+  weeklyOrders: WeeklyOrder;
+}
+
+interface WeeklyOrder {
+  weeklyOrders: {
+    weeklyOrders: string;
+  }
+}
+interface DataDailyHours {
+  hours: string;
+}
+interface DataDailyEarnings {
+  pay: string;
+}

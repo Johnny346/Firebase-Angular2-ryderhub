@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ChartsModule } from 'ng2-charts';
+import { ChartsModule, BaseChartDirective } from 'ng2-charts';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { environment } from '../../../environments/environment';
@@ -20,5 +20,8 @@ import { AngularFireAuthModule }from '@angular/fire/auth';
     AngularFireAuthModule,
   ],
   declarations: [ DashboardComponent ],
+  providers: [
+    BaseChartDirective
+  ]
 })
 export class DashboardModule { }

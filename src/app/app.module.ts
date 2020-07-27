@@ -44,7 +44,7 @@ import { AppRoutingModule } from './app.routing';
 // Import 3rd party components
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { ChartsModule } from 'ng2-charts';
+import { ChartsModule,BaseChartDirective } from 'ng2-charts';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 import { LandingpageComponent } from "./landingpage/landingpage.component";
 import {AfterViewChecked, Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
@@ -87,6 +87,7 @@ import { TermsconditionsComponent } from './termsconditions/termsconditions.comp
   providers: [
     AngularFireAuthGuardModule,
     IDtokenWeatherApp,
+    BaseChartDirective,
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy
