@@ -12,7 +12,7 @@ export class ApiserviceService {
 
   public weatherData;
   public RootObject;
-  private REST_API_SERVER = "http://77.68.25.40:443/phpfiles/dashboardGetMainData.php";
+  private REST_API_SERVER = "http://77.68.25.40/phpfiles/dashboardGetMainData.php";
   constructor(private http: HttpClient, private IDtokenWeatherApp: IDtokenWeatherApp) { }
  
   getData(userEmail): Observable<any> { 
@@ -45,7 +45,7 @@ export class ApiserviceService {
     }
 
     getUpdatedData(userEmail,finishDate,startDate): Observable<any> {
-      let url= 'http://77.68.25.40:443/phpfiles/dashboardGetUpdatedMainData.php';
+      let url= 'http://77.68.25.40/phpfiles/dashboardGetUpdatedMainData.php';
       var endDate = finishDate.getFullYear() + "-" + (finishDate.getMonth()+1)
         + "-" + finishDate.getDate();
       startDate = startDate.getFullYear() + "-" + (startDate.getMonth()+1)
@@ -89,7 +89,7 @@ export class ApiserviceService {
 
     // post invoice files
     postInvoiceFiles(formData): Observable<any> { 
-      let url= 'http://77.68.25.40:443/phpfiles/upload.php'; // point to server-side PHP script 
+      let url= 'http://77.68.25.40/phpfiles/upload.php'; // point to server-side PHP script 
       // Http Headers
       const httpOptions = {
       headers: new HttpHeaders({
@@ -113,7 +113,7 @@ export class ApiserviceService {
       }
 
       registerUser(registerUser): Observable<any> {
-        let url = 'http://77.68.25.40:443/phpfiles/serverRegisterUser.php';
+        let url = 'http://77.68.25.40/phpfiles/serverRegisterUser.php';
         let name = registerUser.firstname + " " + registerUser.lastname;
       
 
