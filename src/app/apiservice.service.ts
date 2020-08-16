@@ -12,7 +12,7 @@ export class ApiserviceService {
 
   public weatherData;
   public RootObject;
-  private REST_API_SERVER = "http://77.68.25.40/phpfiles/dashboardGetMainData.php";
+  private REST_API_SERVER = "https://77.68.25.40/phpfiles/dashboardGetMainData.php";
   constructor(private http: HttpClient, private IDtokenWeatherApp: IDtokenWeatherApp) { }
  
   getData(userEmail): Observable<any> { 
@@ -45,7 +45,7 @@ export class ApiserviceService {
     }
 
     getUpdatedData(userEmail,finishDate,startDate): Observable<any> {
-      let url= 'http://77.68.25.40/phpfiles/dashboardGetUpdatedMainData.php';
+      let url= 'https://77.68.25.40/phpfiles/dashboardGetUpdatedMainData.php';
       var endDate = finishDate.getFullYear() + "-" + (finishDate.getMonth()+1)
         + "-" + finishDate.getDate();
       startDate = startDate.getFullYear() + "-" + (startDate.getMonth()+1)
@@ -78,7 +78,7 @@ export class ApiserviceService {
     getWeatherData(): Observable<any> {
        let id = new IDtokenWeatherApp();
        
-      let url = 'http://api.openweathermap.org/data/2.5/weather?q=cork&units=metric&appid='+id.id;
+      let url = 'https://api.openweathermap.org/data/2.5/weather?q=cork&units=metric&appid='+id.id;
      
       return this.http.get<WeatherdataObject>(url) 
       .pipe(
@@ -89,7 +89,7 @@ export class ApiserviceService {
 
     // post invoice files
     postInvoiceFiles(formData): Observable<any> { 
-      let url= 'http://77.68.25.40/phpfiles/upload.php'; // point to server-side PHP script 
+      let url= 'https://77.68.25.40/phpfiles/upload.php'; // point to server-side PHP script 
       // Http Headers
       const httpOptions = {
       headers: new HttpHeaders({
@@ -113,7 +113,7 @@ export class ApiserviceService {
       }
 
       registerUser(registerUser): Observable<any> {
-        let url = 'http://77.68.25.40/phpfiles/serverRegisterUser.php';
+        let url = 'https://77.68.25.40/phpfiles/serverRegisterUser.php';
         let name = registerUser.firstname + " " + registerUser.lastname;
       
 
