@@ -4,23 +4,32 @@
         <div>
             <h3>Tax Calculator</h3>
         </div>
+        <h6>Only use as an estimatation for taxes on profits before expenses as calculated.</h6>
     </div>
     <div class="row" style="padding: 12px">
         <div class="col-sm-6 col-lg-6">
             <h5>Start Date: {{ userstartDate}} </h5>
-           
+            <input type="date" class="field1" ng-reguired="true"  [(ngModel)]="earliestWorkDate" name="earliestWorkDate" class="form-control" placeholder="Start date.." required>
+         
             <h5>End Date: {{ userLastDate}} </h5>
-           <hr/>
-	
-          <h4 class="mb-0">Total Income: {{totalIncome }}</h4>
+            <input type="date" class="field2" ng-reguired="true"  [(ngModel)]="newestWorkDate" name="newestWorkDate" class="form-control" placeholder="Finish date.." required>
+         
+           <br/>
+           <button type="button" title="Update" (click)="getUpdatedData()" class="btn btn-primary float-left"><i class="icon-cloud-download"></i> Update</button>
+         <br/>
+         <hr/>
+          <h4 class="mb-0">Total Income: &euro;{{ totalIncome }}</h4>
 	          <br/>
-            <h5>Income Tax: {{incomeTax }}</h5>
+            <h5>Income Tax: &euro;{{ incomeTax }}</h5>
             <br/>
-            <h5>USC: {{usc   }}</h5>
+            <h5>USC: &euro;{{ usc }}</h5>
             <br/>
-            <h5>PRSI: {{prsi  }}</h5>
+            <h5>PRSI: &euro;{{ prsi }}</h5>
+            <h5>Tax credit available: <input type="text" class="field2" ng-reguired="true"  [(ngModel)]="taxCredit" name="taxCredit" class="form-control" placeholder="1500" required>
+         </h5>
+           
             <br/>
-            <h5>Total Tax to pay:<span style="text-decoration: underline"></span> </h5>
+            <h5>Total Tax to pay: &euro;<span style="text-decoration: underline"> {{ netpay }}</span> </h5>
 	          <hr/>
         </div>
         <div class="col-sm-6 col-lg-6">

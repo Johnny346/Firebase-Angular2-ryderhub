@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiserviceService } from '../../apiservice.service';
 
@@ -22,10 +22,19 @@ export class RegisterComponent {
   async onSubmit(form: NgForm){
     this.loading = true;
     this.error = null;
-    const [ email, password, firstname, ryderid, lastname ] = form.value;
+    const [ email, password, firstname, ryderid, lastname, passwordRepeat, city ] = form.value;
 
     try {
-     
+      if(form.value.firstname == "" || form.value.ryderid == "" || form.value.lastname == ""  || form.value.city == ""){
+        this.status = "Form is missing values!";
+        console.log("Form is missing values!");
+        return;
+       }
+      if(form.value.passwordRepeat != form.value.password){
+        this.status = "Passwords dont match!";
+        console.log("Passwords dont match!");
+        return;
+      }
       const resp = await this.afAuth.createUserWithEmailAndPassword(form.value.email, form.value.password);
       await resp.user.updateProfile({ displayName: form.value.firstname });
       // register user in mysql db if successfull
@@ -48,6 +57,7 @@ export class RegisterComponent {
     } catch (error) {
       console.log(error.message);
       this.error = error.message;
+      this.status = this.error;
     }
     this.loading = false;
   }

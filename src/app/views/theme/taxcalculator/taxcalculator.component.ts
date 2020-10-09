@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AngularFireAuth } from '@angular/fire/auth';
+import { ApiserviceService } from '../../../apiservice.service';
 @Component({
   selector: 'app-taxcalculator',
   templateUrl: './taxcalculator.component.html',
@@ -7,57 +8,109 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaxcalculatorComponent implements OnInit {
 
-  constructor() { }
+    constructor(public afAuth: AngularFireAuth, public apiService: ApiserviceService){};
+    public ryderdata;
+    public ryderID;
+    public totalIncome = 0;
+    public earliestWorkDate;
+    public newestWorkDate;
+    public prsi = 0;
+    public usc = 0;
+    public netpay = 0;
+    public incomeTax  = 0;
+    public taxCredit = 1500;
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+        var userEmail = localStorage.getItem('userEmail');
+        // get user data from api
+        this.apiService.getData(userEmail).subscribe((data: {}) => {
+        this.ryderdata = data;
+        //console.log("show data", this.ryderdata.id);
+        this.ryderID = this.ryderdata.id;
+        localStorage.setItem("ryderID",this.ryderID);
+        this.totalIncome = this.ryderdata.totalIncome;
+        this.newestWorkDate = this.ryderdata.newestWorkDate;
+        this.earliestWorkDate = this.ryderdata.earliestWorkDate;
+        this.taxCalc(this.totalIncome); })
 
-}
+        
+    }
 
-/*//tax calc section
-function taxCalc(income){
+    getUpdatedData(){
+    
+        var userEmail = localStorage.getItem('userEmail');
+        var ed = new Date(this.earliestWorkDate);
+        var nd = new Date(this.newestWorkDate);
+        console.log("button clicked ", nd.getFullYear());
+        this.apiService.getUpdatedData(userEmail,nd,ed).subscribe((data: {}) => {
+          this.ryderdata = data;
+          //console.log("show data", this.ryderdata.id);
+          this.ryderID = this.ryderdata.id;
+          localStorage.setItem("ryderID",this.ryderID);
+          this.totalIncome = this.ryderdata.totalIncome;
+         this.netpay = this.taxCalc(this.totalIncome);
+      
+        })
+    
+      }
+//tax calc section
+ taxCalc(income){
     console.log("tax calc running"+ income);
     
         if(income <= 33800){
     
          //income tax @ 20%
-         $scope.incomeTaxT = getPerc(income,20);
+         this.incomeTax = this.getPerc(income,20);
+         this.incomeTax =  Math.round(this.incomeTax);
          // less 1500 tax credit
         if(income > 3000){
-	 $scope.incomeTax = $scope.incomeTaxT -1500;
+	        this.incomeTax = this.incomeTax - this.taxCredit;
         }else{
-	  $scope.incomeTax = $scope.incomeTaxT;
+	        this.incomeTax = this.incomeTax;
 	}
-	 console.log("income: "+income+", tax: "+$scope.incomeTax );
- 	if($scope.incomeTax <0){
-	   $scope.incomeTax =  0;
+	 console.log("income: "+income+", tax: "+ this.incomeTax);
+ 	if(this.incomeTax < 0){
+        this.incomeTax =  0;
 	}
      }
      if(income > 33800){
          //income tax <=33800 @ 20%
-         $scope.incomeTaxLower = getPerc(income,20);
+         let incomeTaxLower = this.incomeTax;
+        
         //income -33800 is taxed @ 40%
-        $scope.incomeTax= getPerc(income-33800,40)+ $scope.incomeTaxLower;
+        this.incomeTax  = this.getPerc(income-33800,40)+  Math.round(incomeTaxLower);
     }
 
-    if(income >=13000){
+    if(income >= 13000){
         //usc
         //12012 taxed @ 0.5%
         //next 7862 taxed @2%
         //next 50672 taxed @4.5%
-        $scope.usc = getPerc(income,3);
+        this.usc = this.getPerc(income,4);
 
     }else{
-        $scope.usc = 0;
-        }
-    if(income >=5000){
+        this.usc = 0;
+    }
+    if(income >= 12400){
         //prsi
         //all taxed @ 0.4%
-        $scope.prsi= getPerc(income,4);
+        this.prsi= this.getPerc(income,4);
 
+    }else{
+        this.prsi = 500;
     }
+    let vt = this.prsi + this.usc + this.incomeTax;
+    this.netpay = Math.round(vt * 100) / 100;
+
+    if(this.usc + this.incomeTax < 500){
+        this.netpay = 500;
+    }
+    return this.incomeTax;
 }
-    function getPerc(num, percent) {
-             return ((Number(percent) / 100) * Number(num));
+     getPerc(num, percent) {
+        return ((Number(percent) / 100) * Number(num));
     }
-*/
+
+}
+
+

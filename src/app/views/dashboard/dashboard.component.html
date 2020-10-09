@@ -109,7 +109,7 @@
   <div class="card">
     <div class="card-body">
       <h4 class="card-title mb-0">Work Completed Chart</h4>
-      <button type="button" title="Update chart" (click)="getUpdatedData()" class="btn btn-primary float-right"><i class="icon-cloud-download"></i></button>
+      <button type="button" title="Update chart" (click)="getUpdatedData()" class="btn btn-primary float-right"><i class="icon-cloud-download"> Update</i></button>
          
       <div class="row">
         <div class="col-sm-6">
@@ -154,48 +154,40 @@
               <div class="row">
                 <div class="col-sm-3">
                   <div class="callout callout-info">
+                    <h6>RyderID: {{ryderID}}  </h6>
                     <small class="text-muted">Average Daily Hours</small>
                     <br>
-                    <strong class="h4">12</strong>
+                    <strong class="h4">{{ avgDailyHours }}</strong>
                   </div>
                 </div><!--/.col-->
                 <div class="col-sm-3">
                   <div class="callout callout-danger">
+                    <h6>RyderID: {{ryderID}} </h6>
                     <small class="text-muted">Avg Houly earnings</small>
                     <br>
-                    <strong class="h4">11</strong>
+                    <strong class="h4">{{ avgHourlyEarnings }}</strong>
                   </div>
                 </div><!--/.col-->
                 <div class="col-sm-3">
                   <div class="callout callout-warning">
-                    <small class="text-muted">Min Daily Hours</small>
+                    <h6>Global</h6>
+                    <small class="text-muted">Average Daily Hours</small>
                     <br>
-                    <strong class="h4">2</strong>
+                    <strong class="h4">--</strong>
                   </div>
                 </div><!--/.col-->
                 <div class="col-sm-3">
                   <div class="callout callout-danger">
-                    <small class="text-muted">Max Hours</small>
+                    <h6>Global</h6>
+                    <small class="text-muted">Avg Houly earnings</small>
                     <br>
-                    <strong class="h4">22</strong>
+                    <strong class="h4">--</strong>
                   </div>
                   
                 </div><!--/.col-->
               </div><!--/.row-->
-              <hr class="mt-0">
-              <div class="progress-group-bars"> 
-                Average Orders
-                <div class="progress progress-xs">
-                  <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-              <div class="progress-group-bars"> 
-                 Avergae Earnings
-                 <div class="progress progress-xs">
-                  <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-              <hr/>
+             
+              <hr/> 
               <div class="progress-group mb-4">
                 <div class="progress-group-prepend">
                   <span class="progress-group-text">
@@ -203,12 +195,31 @@
                   </span>
                 </div>
                 <div class="progress-group-bars">
+                  <h6>Avg Orders: {{ avgDailyOrdersMonday }}</h6>
                   <div class="progress progress-xs">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 34%" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-info " id="monday-progBar-orders" role="progressbar" style="width:90%"  aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
                     
                   </div>
+                  <h6>Avg Earnings: &euro;{{ AvgIncomeMonday }}</h6>
                   <div class="progress progress-xs">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-danger" id="monday-progBar-earnings" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                
+                <div class="progress-group-prepend">
+                  <span class="progress-group-text">
+                    Global Monday
+                  </span>
+                </div>
+                <div class="progress-group-bars">
+                  <h6>Avg Orders: {{ avgDailyOrdersMonday }}</h6>
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-info " id="monday-progBar-orders" role="progressbar" style="width:90%"  aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
+                    
+                  </div>
+                  <h6>Avg Earnings: &euro;{{ AvgIncomeMonday }}</h6>
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-danger" id="monday-progBar-earnings" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
               </div>
@@ -219,11 +230,28 @@
                   </span>
                 </div>
                 <div class="progress-group-bars">
+                  <h6>Avg Orders: {{ avgDailyOrdersTuesday }}</h6>
                   <div class="progress progress-xs">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 56%" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-info" id="tuesday-progBar-orders" role="progressbar" style="width: 56%" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
+                  <h6>Avg Earnings: &euro;{{ AvgIncomeTuesday }}</h6>
                   <div class="progress progress-xs">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 94%" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-danger" id="tuesday-progBar-earnings" role="progressbar" style="width: 94%" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                <div class="progress-group-prepend">
+                  <span class="progress-group-text">
+                    Global Tuesday
+                  </span>
+                </div>
+                <div class="progress-group-bars">
+                  <h6>Avg Orders: {{ avgDailyOrdersTuesday }}</h6>
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-info" id="tuesday-progBar-orders" role="progressbar" style="width: 56%" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h6>Avg Earnings: &euro;{{ AvgIncomeTuesday }}</h6>
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-danger" id="tuesday-progBar-earnings" role="progressbar" style="width: 94%" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
               </div>
@@ -234,11 +262,28 @@
                   </span>
                 </div>
                 <div class="progress-group-bars">
+                  <h6>Avg Orders: {{ avgDailyOrdersWednesday }}</h6>
                   <div class="progress progress-xs">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 12%" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-info" id="wednesday-progBar-orders" role="progressbar" style="width: 12%" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
+                  <h6>Avg Earnings: &euro;{{ AvgIncomeWednesday }}</h6>
                   <div class="progress progress-xs">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 67%" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-danger" id="wednesday-progBar-earnings" role="progressbar" style="width: 67%" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                <div class="progress-group-prepend">
+                  <span class="progress-group-text">
+                    Global Wednesday
+                  </span>
+                </div>
+                <div class="progress-group-bars">
+                  <h6>Avg Orders: {{ avgDailyOrdersWednesday }}</h6>
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-info" id="wednesday-progBar-orders" role="progressbar" style="width: 12%" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h6>Avg Earnings: &euro;{{ AvgIncomeWednesday }}</h6>
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-danger" id="wednesday-progBar-earnings" role="progressbar" style="width: 67%" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
               </div>
@@ -249,11 +294,28 @@
                   </span>
                 </div>
                 <div class="progress-group-bars">
+                  <h6>Avg Orders: {{ avgDailyOrdersThursday }}</h6>
                   <div class="progress progress-xs">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-info" id="thursday-progBar-orders" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
+                  <h6>Avg Earnings: &euro;{{ AvgIncomeThursday }}</h6>
                   <div class="progress progress-xs">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 91%" aria-valuenow="91" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-danger" id="thursday-progBar-earnings" role="progressbar" style="width: 91%" aria-valuenow="91" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                <div class="progress-group-prepend">
+                  <span class="progress-group-text">
+                    Global Thursday
+                  </span>
+                </div>
+                <div class="progress-group-bars">
+                  <h6>Avg Orders: {{ avgDailyOrdersThursday }}</h6>
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-info" id="thursday-progBar-orders" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h6>Avg Earnings: &euro;{{ AvgIncomeThursday }}</h6>
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-danger" id="thursday-progBar-earnings" role="progressbar" style="width: 91%" aria-valuenow="91" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
               </div>
@@ -264,11 +326,28 @@
                   </span>
                 </div>
                 <div class="progress-group-bars">
+                  <h6>Avg Orders: {{ avgDailyOrdersFriday }}</h6>
                   <div class="progress progress-xs">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 22%" aria-valuenow="22" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-info" id="friday-progBar-orders" role="progressbar" style="width: 22%" aria-valuenow="22" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
+                  <h6>Avg Earnings: &euro;{{ AvgIncomeFriday }}</h6>
                   <div class="progress progress-xs">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 73%" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-danger" id="friday-progBar-earnings" role="progressbar" style="width: 73%" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                <div class="progress-group-prepend">
+                  <span class="progress-group-text">
+                    Global Friday
+                  </span>
+                </div>
+                <div class="progress-group-bars">
+                  <h6>Avg Orders: {{ avgDailyOrdersFriday }}</h6>
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-info" id="friday-progBar-orders" role="progressbar" style="width: 22%" aria-valuenow="22" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h6>Avg Earnings: &euro;{{ AvgIncomeFriday }}</h6>
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-danger" id="friday-progBar-earnings" role="progressbar" style="width: 73%" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
               </div>
@@ -279,11 +358,28 @@
                   </span>
                 </div>
                 <div class="progress-group-bars">
+                  <h6>Avg Orders: {{ avgDailyOrdersSaturday }}</h6>
                   <div class="progress progress-xs">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 53%" aria-valuenow="53" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-info" id="saturday-progBar-orders" role="progressbar" style="width: 53%" aria-valuenow="53" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
+                  <h6>Avg Earnings: &euro;{{ AvgIncomeSaturday }}</h6>
                   <div class="progress progress-xs">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-danger" id="saturday-progBar-earnings" role="progressbar" style="width: 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                <div class="progress-group-prepend">
+                  <span class="progress-group-text">
+                    Global Saturday
+                  </span>
+                </div>
+                <div class="progress-group-bars">
+                  <h6>Avg Orders: {{ avgDailyOrdersSaturday }}</h6>
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-info" id="saturday-progBar-orders" role="progressbar" style="width: 53%" aria-valuenow="53" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h6>Avg Earnings: &euro;{{ AvgIncomeSaturday }}</h6>
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-danger" id="saturday-progBar-earnings" role="progressbar" style="width: 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
               </div>
@@ -294,11 +390,28 @@
                   </span>
                 </div>
                 <div class="progress-group-bars">
+                  <h6>Avg Orders: {{ avgDailyOrdersSunday }}</h6>
                   <div class="progress progress-xs">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 9%" aria-valuenow="9" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-info" id="sunday-progBar-orders" role="progressbar" style="width: 9%" aria-valuenow="9" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
+                  <h6>Avg Earnings: &euro;{{ AvgIncomeSunday }}</h6>
                   <div class="progress progress-xs">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 69%" aria-valuenow="69" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-danger" id="sunday-progBar-earnings" role="progressbar" style="width: 69%" aria-valuenow="69" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                <div class="progress-group-prepend">
+                  <span class="progress-group-text">
+                    Global Sunday
+                  </span>
+                </div>
+                <div class="progress-group-bars">
+                  <h6>Avg Orders: {{ avgDailyOrdersSunday }}</h6>
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-info" id="sunday-progBar-orders" role="progressbar" style="width: 9%" aria-valuenow="9" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h6>Avg Earnings: &euro;{{ AvgIncomeSunday }}</h6>
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-danger" id="sunday-progBar-earnings" role="progressbar" style="width: 69%" aria-valuenow="69" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
               </div>
@@ -318,44 +431,54 @@
             </div><!--/.col-->
           </div><!--/.row-->
           <br>
+         <!-- <div class="card">
+            <div class="card-header">
+                <h4>Monthly Bar Chart Analysis</h4>
+              <div class="card-header-actions">
+                <a href="http://www.chartjs.org">
+                  <small class="text-muted">docs</small>
+                </a>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="chart-wrapper">
+                <canvas baseChart class="chart"
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+          </div>-->
           <h3>Invoices</h3>
           <table class="table table-responsive-sm table-hover table-outline mb-0">
             <thead class="thead-light">
               <tr>
-                <th class="text-center"></th>
+                <th></th>
                 <th>ID</th>
-                <th class="text-center">Date</th>
-                <th>Total Hours</th>
-                <th class="text-center">Total orders</th>
+                <th>Date</th>
+                <th>DropFees</th>
                 <th>Total Tips</th>
                 <th>Total Earnings</th>
+                <th></th>
               </tr>
             </thead>
-            <tbody>
-              
-              <tr>
-                <td class="text-center">
-                  
+            <tbody *ngFor="let ItemsArray of ItemsArrayInvoice; let i = index"[attr.data-index]="i">
+                <tr *ngFor="let item of ItemsArray;" >
+                  <td></td>
+                  <td>{{ item.ID }}</td>
+                  <td>{{ item.Date }}</td>
+                  <td>{{ item.Dropfees }}</td>
+                  <td>&euro; {{ item.Tips}}</td>
+                  <td>&euro; {{ item.Total }}</td>
+                  <td>
+                    <button type="button" class="btn btn-primary">Edit</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
                 </td>
-                <td class="text-center">
-                  id:45 
-                </td>
-                <td class="text-center">
-                  Jul 10, 2015
-                </td>
-                <td class="text-center">
-                  15
-                </td>
-                <td class="text-center">
-                  10
-                </td>
-                <td class="text-center">
-                  &euro;19.00
-                </td>
-                <td class="text-center">
-                  &euro;150
-                </td>
-              </tr>
+                </tr>
             </tbody>
           </table>
         </div>

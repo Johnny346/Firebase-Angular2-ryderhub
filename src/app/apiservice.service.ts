@@ -89,6 +89,11 @@ export class ApiserviceService {
 
     // post invoice files
     postInvoiceFiles(formData): Observable<any> { 
+
+      if(formData == null){
+        console.log("no files");
+        return;
+      }
       let url= 'https://myryderhub.co.uk/phpfiles/upload.php'; // point to server-side PHP script 
       // Http Headers
       const httpOptions = {

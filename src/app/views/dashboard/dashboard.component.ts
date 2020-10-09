@@ -6,9 +6,10 @@ import { ApiserviceService } from '../../apiservice.service';
 import { WeatherdataObject } from '../../weatherdata-object';
 @Component({
   templateUrl: 'dashboard.component.html'
+  
 })
 export class DashboardComponent implements OnInit {
-
+  public mondayavghours = '90%';
   constructor(public afAuth: AngularFireAuth, public apiService: ApiserviceService){};
 
   radioModel: string = 'Month';
@@ -176,7 +177,19 @@ export class DashboardComponent implements OnInit {
   public lineChart3Legend = false;
   public lineChart3Type = 'line';
 
+// barChart
+public barChartOptions: any = {
+  scaleShowVerticalLines: false,
+  responsive: true
+};
+public barChartLabels: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July'];
+public barChartType = 'bar';
+public barChartLegend = true;
 
+public barChartData: any[] = [
+  {data: [65, 59, 80, 81, 56, 55, 40], label: 'Orders'},
+  {data: [28, 48, 40, 19, 86, 27, 90], label: 'Earnings'}
+];
   // barChart1
   public barChart1Data: Array<any> = [
     {
@@ -388,6 +401,24 @@ export class DashboardComponent implements OnInit {
   public avgWeeklyPay = 0;
   public avgDailyOrders = 0;
   public userstartDate = 0;
+  public avgDailyHours = 0;
+  public avgHourlyEarnings = 0;
+  public avgDailyOrdersSunday = 0;
+  public avgDailyOrdersMonday = 0;
+  public avgDailyOrdersTuesday = 0;
+  public avgDailyOrdersWednesday = 0;
+  public avgDailyOrdersThursday = 0;
+  public avgDailyOrdersFriday = 0;
+  public avgDailyOrdersSaturday = 0;
+  
+  public AvgIncomeSunday = 0;
+  public AvgIncomeMonday = 0;
+  public AvgIncomeTuesday = 0;
+  public AvgIncomeWednesday = 0;
+  public AvgIncomeThursday = 0;
+  public AvgIncomeFriday = 0;
+  public AvgIncomeSaturday = 0;
+
   public DataDailyOrders;
   public dataDailyOrders;
   public DataDailyHours;
@@ -407,8 +438,17 @@ export class DashboardComponent implements OnInit {
   public weatherdata:WeatherdataObject  =  <WeatherdataObject>{};
   public todayDate;
   public WeeklyOrder;
+  public ItemsArrayInvoice = [];
+  public InvoiceArray;
+  public ItemsArray = [];
   
+
   ngOnInit(): void {
+      //this.ItemsArray.ID = 22;
+      //this.ItemsArray = [{ID: 777, Date: new Date().getTime(), type: 'text', value: 'Hallo Welt!', sent: new Date().getTime(), delivered: 0, read: 0},
+      //{ID: 888, time: new Date().getTime(), type: 'text', value: 'Hallo Welt!', sent: new Date().getTime(), delivered: 0, read: 0}];
+      
+      //this.ItemsArray.push
       var userEmail = localStorage.getItem('userEmail');
       // get user data from api
       this.apiService.getData(userEmail).subscribe((data: {}) => {
@@ -425,9 +465,75 @@ export class DashboardComponent implements OnInit {
       this.dataDailyOrders = this.ryderdata.DataDailyOrders;
       this.DataDailyHours = this.ryderdata.DataDailyHours;
       this.DataDailyEarnings = this.ryderdata.DataDailyEarnings;
+      this.avgDailyHours = this.ryderdata.avgDailyHours;
+      this.avgHourlyEarnings = this.ryderdata.avgHourlyEarnings;
+      
+      this.InvoiceArray = this.ryderdata.Invoice;
+        
+     if(this.InvoiceArray.length > 0){
+      for (let i = 0; i <= this.InvoiceArray.length; i++) {
+        try{
+          
+          this.ItemsArray = ( [{ID: this.InvoiceArray[i].ID, Date: this.InvoiceArray[i].Date, Dropfees: this.InvoiceArray[i].Dropfees, Tips: this.InvoiceArray[i].Tips, Total: this.InvoiceArray[i].Total}]);
+         
+          this.ItemsArrayInvoice.push(this.ItemsArray);
+           
+        }catch(error){
+
+        } 
+      }
+    }
+      
+      //console.log("this.InvoiceArray[i].ID", this.ItemsArrayInvoice);
+      this.avgDailyOrdersSunday = this.ryderdata.avgDailyOrdersSunday;
+      this.avgDailyOrdersMonday = this.ryderdata.avgDailyOrdersMonday;
+      this.avgDailyOrdersTuesday = this.ryderdata.avgDailyOrdersTuesday;
+      this.avgDailyOrdersWednesday = this.ryderdata.avgDailyOrdersWednesday;
+      this.avgDailyOrdersThursday = this.ryderdata.avgDailyOrdersThursday;
+      this.avgDailyOrdersFriday = this.ryderdata.avgDailyOrdersFriday;
+      this.avgDailyOrdersSaturday = this.ryderdata.avgDailyOrdersSaturday;
+
+      this.AvgIncomeSunday = this.ryderdata.AvgIncomeSunday;
+      this.AvgIncomeMonday = this.ryderdata.AvgIncomeMonday;
+      this.AvgIncomeTuesday= this.ryderdata.AvgIncomeTuesday;
+      this.AvgIncomeWednesday = this.ryderdata.AvgIncomeWednesday;
+      this.AvgIncomeThursday = this.ryderdata.AvgIncomeThursday;
+      this.AvgIncomeFriday = this.ryderdata.AvgIncomeFriday;
+      this.AvgIncomeSaturday = this.ryderdata.AvgIncomeSaturday;
+    // console.log("AvgIncomeSunday",this.AvgIncomeSunday);
       //console.log("show this.newestWorkDate",  this.DataDailyOrders.length);
      // generate random values for mainChart
+     //style progress bar orders width
+     const elementOrdersMonday = document.getElementById('monday-progBar-orders');
+     elementOrdersMonday.style.width = this.avgDailyOrdersMonday + '%';
+     const elementOrdersTuesday = document.getElementById('tuesday-progBar-orders');
+     elementOrdersTuesday.style.width = this.avgDailyOrdersTuesday + '%';
+     const elementOrdersWednesday = document.getElementById('wednesday-progBar-orders');
+     elementOrdersWednesday.style.width = this.avgDailyOrdersWednesday + '%';
+     const elementOrdersThursday = document.getElementById('thursday-progBar-orders');
+     elementOrdersThursday.style.width = this.avgDailyOrdersThursday + '%';
+     const elementOrdersFriday = document.getElementById('friday-progBar-orders');
+     elementOrdersFriday.style.width = this.avgDailyOrdersFriday + '%';
+     const elementOrdersSaturday = document.getElementById('saturday-progBar-orders');
+     elementOrdersSaturday.style.width = this.avgDailyOrdersSaturday + '%';
+     const elementOrdersSunday = document.getElementById('sunday-progBar-orders');
+     elementOrdersSunday.style.width = this.avgDailyOrdersSunday + '%';
+
      
+     const elementEarningsMonday = document.getElementById('monday-progBar-earnings');
+     elementEarningsMonday.style.width = this.AvgIncomeMonday + '%';
+     const elementEarningsTuesday = document.getElementById('tuesday-progBar-earnings');
+     elementEarningsTuesday.style.width = this.AvgIncomeTuesday + '%';
+     const elementEarningsWednesday = document.getElementById('wednesday-progBar-earnings');
+     elementEarningsWednesday.style.width = this.AvgIncomeWednesday + '%';
+     const elementEarningsThursday = document.getElementById('thursday-progBar-earnings');
+     elementEarningsThursday.style.width = this.AvgIncomeThursday + '%';
+     const elementEarningsFriday = document.getElementById('friday-progBar-earnings');
+     elementEarningsFriday.style.width = this.AvgIncomeFriday + '%';
+     const elementEarningsSaturday = document.getElementById('saturday-progBar-earnings');
+     elementEarningsSaturday.style.width = this.AvgIncomeSaturday + '%';
+     const elementEarningsSunday = document.getElementById('sunday-progBar-earnings');
+     elementEarningsSunday.style.width = this.AvgIncomeSunday + '%';
      //console.log("show this.newestWorkDate",this.dataDailyOrders[33].weeklyOrders[0]);
     for (let i = 0; i <= this.dataDailyOrders.length; i++) {
         try{
@@ -440,6 +546,7 @@ export class DashboardComponent implements OnInit {
         } 
       }
     })
+     
    
   }
   getUpdatedData(){
@@ -504,6 +611,7 @@ export class DashboardComponent implements OnInit {
             ];
         }, 0)
   }
+  
   getWeatherData(){
     this.apiService.getWeatherData().subscribe((data: {}) => {
       this.RootObject = data;
@@ -598,8 +706,27 @@ interface ryderdata {
   totalHours: string;
   avgWeeklyPay: string;
   avgDailyOrders: string;
+  avgDailyHours: string;
+  avgHourlyEarnings: string;
+  avgDailyOrdersSunday: string;
+  avgDailyOrdersMonday: string;
+  avgDailyOrdersTuesday: string;
+  avgDailyOrdersWednesday: string;
+  avgDailyOrdersThursday: string;
+  avgDailyOrdersFriday: string;
+  avgDailyOrdersSaturday: string;
+  
+  AvgIncomeSunday: string;
+  AvgIncomeMonday: string;
+  AvgIncomeTuesday: string;
+  AvgIncomeWednesday: string;
+  AvgIncomeThursday: string;
+  AvgIncomeFriday: string;
+  AvgIncomeSaturday: string;
+
   userstartDate: string;
   newestWorkDate: string;
+  Invoice: invoice[];
   DataDailyOrders: dataDailyOrders[];
   DataDailyHours: [];
   DataDailyEarnings: [];
@@ -620,3 +747,23 @@ interface DataDailyHours {
 interface DataDailyEarnings {
   pay: string;
 }
+
+export interface invoice  
+ {
+  ID: string;
+  Date:string;
+  Dropfees:string;
+  Tips:string;
+  Total:string;
+}
+/*
+export interface invoice extends Array<invoice> 
+ {
+  ID: number;
+  Date:string;
+  Dropfees:number;
+  Tips:number;
+  Total:number;
+}
+
+*/

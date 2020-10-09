@@ -7,9 +7,9 @@ export class ChartJSComponent {
 
   // lineChart
   public lineChartData: Array<any> = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'},
-    {data: [18, 48, 77, 9, 100, 27, 40], label: 'Series C'}
+    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Hours'},
+    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Earnings'},
+    {data: [18, 48, 77, 9, 100, 27, 40], label: 'Orders'}
   ];
   public lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChartOptions: any = {
@@ -55,8 +55,8 @@ export class ChartJSComponent {
   public barChartLegend = true;
 
   public barChartData: any[] = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
+    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Orders'},
+    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Earnings'}
   ];
 
   // Doughnut
@@ -65,21 +65,21 @@ export class ChartJSComponent {
   public doughnutChartType = 'doughnut';
 
   // Radar
-  public radarChartLabels: string[] = ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'];
+  public radarChartLabels: string[] = ['Hours', 'Earnings', 'Hours', 'Earnings', 'Hours', 'Cycling', 'Orders'];
 
   public radarChartData: any = [
-    {data: [65, 59, 90, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 96, 27, 100], label: 'Series B'}
+    {data: [65, 59, 90, 81, 56, 55, 40], label: 'Orders'},
+    {data: [28, 48, 40, 19, 96, 27, 100], label: 'Hours'}
   ];
   public radarChartType = 'radar';
 
   // Pie
-  public pieChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales'];
+  public pieChartLabels: string[] = ['Cycling', 'Scooter', 'Car'];
   public pieChartData: number[] = [300, 500, 100];
   public pieChartType = 'pie';
 
   // PolarArea
-  public polarAreaChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales', 'Telesales', 'Corporate Sales'];
+  public polarAreaChartLabels: string[] = ['Cycling', 'Scooter', 'Car', 'Cycling', 'Car'];
   public polarAreaChartData: number[] = [300, 500, 100, 40, 120];
   public polarAreaLegend = true;
 
