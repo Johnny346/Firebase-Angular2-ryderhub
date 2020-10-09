@@ -9,6 +9,8 @@ import { WeatherdataObject } from '../../weatherdata-object';
   
 })
 export class DashboardComponent implements OnInit {
+
+  
   public mondayavghours = '90%';
   constructor(public afAuth: AngularFireAuth, public apiService: ApiserviceService){};
 
@@ -395,14 +397,16 @@ public barChartData: any[] = [
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
   public ryderdata;
-  public ryderID;
+  public id;
   public totalIncome = 0;
   public totalHours = 0;
   public avgWeeklyPay = 0;
   public avgDailyOrders = 0;
   public userstartDate = 0;
   public avgDailyHours = 0;
+  public avgDailyHoursGlobal = 0;
   public avgHourlyEarnings = 0;
+  public avgHourlyEarningsGlobal = 0;
   public avgDailyOrdersSunday = 0;
   public avgDailyOrdersMonday = 0;
   public avgDailyOrdersTuesday = 0;
@@ -411,6 +415,14 @@ public barChartData: any[] = [
   public avgDailyOrdersFriday = 0;
   public avgDailyOrdersSaturday = 0;
   
+  public avgDailyOrdersSundayGlobal = 0;
+  public avgDailyOrdersMondayGlobal= 0; 
+  public avgDailyOrdersTuesdayGlobal = 0;
+  public avgDailyOrdersWednesdayGlobal = 0;
+  public avgDailyOrdersThursdayGlobal = 0;
+  public avgDailyOrdersFridayGlobal = 0;
+  public avgDailyOrdersSaturdayGlobal = 0;
+
   public AvgIncomeSunday = 0;
   public AvgIncomeMonday = 0;
   public AvgIncomeTuesday = 0;
@@ -418,6 +430,14 @@ public barChartData: any[] = [
   public AvgIncomeThursday = 0;
   public AvgIncomeFriday = 0;
   public AvgIncomeSaturday = 0;
+
+  public AvgIncomeSundayGlobal = 0;
+  public AvgIncomeMondayGlobal = 0;
+  public AvgIncomeTuesdayGlobal = 0;
+  public AvgIncomeWednesdayGlobal = 0;
+  public AvgIncomeThursdayGlobal = 0;
+  public AvgIncomeFridayGlobal = 0;
+  public AvgIncomeSaturdayGlobal = 0;
 
   public DataDailyOrders;
   public dataDailyOrders;
@@ -444,18 +464,44 @@ public barChartData: any[] = [
   
 
   ngOnInit(): void {
+    // Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+//var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+//btn.onclick = function() {
+//  modal.style.display = "block";
+//}
+
+// When the user clicks on <span> (x), close the modal
+
+span.addEventListener("click", (e:Event) =>  modal.style.display = "none");
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
       //this.ItemsArray.ID = 22;
       //this.ItemsArray = [{ID: 777, Date: new Date().getTime(), type: 'text', value: 'Hallo Welt!', sent: new Date().getTime(), delivered: 0, read: 0},
       //{ID: 888, time: new Date().getTime(), type: 'text', value: 'Hallo Welt!', sent: new Date().getTime(), delivered: 0, read: 0}];
       
       //this.ItemsArray.push
-      var userEmail = localStorage.getItem('userEmail');
+      var userEmail = localStorage.getItem('userEmail'); 
+      
+      //console.log("show userEmail", userEmail);
+      //console.log("show data", this.ryderdata.id);
       // get user data from api
       this.apiService.getData(userEmail).subscribe((data: {}) => {
       this.ryderdata = data;
       //console.log("show data", this.ryderdata.id);
-      this.ryderID = this.ryderdata.id;
-      localStorage.setItem("ryderID",this.ryderID);
+      this.id = this.ryderdata.id;
+      localStorage.setItem("ryderID",this.id );
       this.totalIncome = this.ryderdata.totalIncome;
       this.totalHours = this.ryderdata.totalHours;
       this.avgWeeklyPay = this.ryderdata.avgWeeklyPay;
@@ -466,11 +512,12 @@ public barChartData: any[] = [
       this.DataDailyHours = this.ryderdata.DataDailyHours;
       this.DataDailyEarnings = this.ryderdata.DataDailyEarnings;
       this.avgDailyHours = this.ryderdata.avgDailyHours;
+      this.avgDailyHoursGlobal = this.ryderdata.avgDailyHoursGlobal;
       this.avgHourlyEarnings = this.ryderdata.avgHourlyEarnings;
-      
+      this.avgHourlyEarningsGlobal = this.ryderdata.avgHourlyEarningsGlobal;
       this.InvoiceArray = this.ryderdata.Invoice;
         
-     if(this.InvoiceArray.length > 0){
+     if(this.totalIncome > 0){
       for (let i = 0; i <= this.InvoiceArray.length; i++) {
         try{
           
@@ -493,6 +540,14 @@ public barChartData: any[] = [
       this.avgDailyOrdersFriday = this.ryderdata.avgDailyOrdersFriday;
       this.avgDailyOrdersSaturday = this.ryderdata.avgDailyOrdersSaturday;
 
+      this.avgDailyOrdersSundayGlobal = this.ryderdata.avgDailyOrdersSundayGlobal;
+      this.avgDailyOrdersMondayGlobal = this.ryderdata.avgDailyOrdersMondayGlobal;
+      this.avgDailyOrdersTuesdayGlobal = this.ryderdata.avgDailyOrdersTuesdayGlobal;
+      this.avgDailyOrdersWednesdayGlobal = this.ryderdata.avgDailyOrdersWednesdayGlobal;
+      this.avgDailyOrdersThursdayGlobal = this.ryderdata.avgDailyOrdersThursdayGlobal;
+      this.avgDailyOrdersFridayGlobal = this.ryderdata.avgDailyOrdersFridayGlobal;
+      this.avgDailyOrdersSaturdayGlobal = this.ryderdata.avgDailyOrdersSaturdayGlobal;
+
       this.AvgIncomeSunday = this.ryderdata.AvgIncomeSunday;
       this.AvgIncomeMonday = this.ryderdata.AvgIncomeMonday;
       this.AvgIncomeTuesday= this.ryderdata.AvgIncomeTuesday;
@@ -500,6 +555,14 @@ public barChartData: any[] = [
       this.AvgIncomeThursday = this.ryderdata.AvgIncomeThursday;
       this.AvgIncomeFriday = this.ryderdata.AvgIncomeFriday;
       this.AvgIncomeSaturday = this.ryderdata.AvgIncomeSaturday;
+
+      this.AvgIncomeSundayGlobal = this.ryderdata.AvgIncomeSundayGlobal;
+      this.AvgIncomeMondayGlobal = this.ryderdata.AvgIncomeMondayGlobal;
+      this.AvgIncomeTuesdayGlobal = this.ryderdata.AvgIncomeTuesdayGlobal;
+      this.AvgIncomeWednesdayGlobal = this.ryderdata.AvgIncomeWednesdayGlobal;
+      this.AvgIncomeThursdayGlobal = this.ryderdata.AvgIncomeThursdayGlobal;
+      this.AvgIncomeFridayGlobal = this.ryderdata.AvgIncomeFridayGlobal;
+      this.AvgIncomeSaturdayGlobal = this.ryderdata.AvgIncomeSaturdayGlobal;
     // console.log("AvgIncomeSunday",this.AvgIncomeSunday);
       //console.log("show this.newestWorkDate",  this.DataDailyOrders.length);
      // generate random values for mainChart
@@ -535,20 +598,27 @@ public barChartData: any[] = [
      const elementEarningsSunday = document.getElementById('sunday-progBar-earnings');
      elementEarningsSunday.style.width = this.AvgIncomeSunday + '%';
      //console.log("show this.newestWorkDate",this.dataDailyOrders[33].weeklyOrders[0]);
-    for (let i = 0; i <= this.dataDailyOrders.length; i++) {
-        try{
-          this.mainChartData1.push(this.dataDailyOrders[i].weeklyOrders);
-          this.mainChartData2.push(this.DataDailyHours[i].hours);
-          this.mainChartData3.push(this.DataDailyEarnings[i].pay);
-          //console.log("show this.newestWorkDate", this.dataDailyOrders[i].weeklyOrders);
-        }catch(error){
+    
+     if(this.totalIncome == 0){
+      modal.style.display = "block";
+     }
+     if(this.totalIncome > 0){
+      for (let i = 0; i <= this.dataDailyOrders.length; i++) {
+          try{
+            this.mainChartData1.push(this.dataDailyOrders[i].weeklyOrders);
+            this.mainChartData2.push(this.DataDailyHours[i].hours);
+            this.mainChartData3.push(this.DataDailyEarnings[i].pay);
+            //console.log("show this.newestWorkDate", this.dataDailyOrders[i].weeklyOrders);
+          }catch(error){
 
-        } 
+          } 
+        }
       }
-    })
+      })
      
    
-  }
+  
+ }
   getUpdatedData(){
     
     var userEmail = localStorage.getItem('userEmail');
@@ -558,8 +628,8 @@ public barChartData: any[] = [
     this.apiService.getUpdatedData(userEmail,nd,ed).subscribe((data: {}) => {
       this.ryderdata = data;
       //console.log("show data", this.ryderdata.id);
-      this.ryderID = this.ryderdata.id;
-      localStorage.setItem("ryderID",this.ryderID);
+      this.id = this.ryderdata.id;
+      localStorage.setItem("ryderID",this.id);
       this.totalIncome = this.ryderdata.totalIncome;
       this.totalHours = this.ryderdata.totalHours;
       this.avgWeeklyPay = this.ryderdata.avgWeeklyPay;
@@ -701,13 +771,15 @@ export interface RootObject {
   cod: number;
 }
 interface ryderdata {
-  ryderID: string;
+  id: string;
   totalIncome: string;
   totalHours: string;
   avgWeeklyPay: string;
   avgDailyOrders: string;
   avgDailyHours: string;
+  avgDailyHoursGlobal:string;
   avgHourlyEarnings: string;
+  avgHourlyEarningsGlobal: string;
   avgDailyOrdersSunday: string;
   avgDailyOrdersMonday: string;
   avgDailyOrdersTuesday: string;
@@ -715,6 +787,14 @@ interface ryderdata {
   avgDailyOrdersThursday: string;
   avgDailyOrdersFriday: string;
   avgDailyOrdersSaturday: string;
+
+  avgDailyOrdersSundayGlobal: string;
+  avgDailyOrdersMondayGlobal: string;
+  avgDailyOrdersTuesdayGlobal: string;
+  avgDailyOrdersWednesdayGlobal: string;
+  avgDailyOrdersThursdayGlobal: string;
+  avgDailyOrdersFridayGlobal: string;
+  avgDailyOrdersSaturdayGlobal: string;
   
   AvgIncomeSunday: string;
   AvgIncomeMonday: string;
@@ -723,6 +803,14 @@ interface ryderdata {
   AvgIncomeThursday: string;
   AvgIncomeFriday: string;
   AvgIncomeSaturday: string;
+
+  AvgIncomeSundayGlobal: string;
+  AvgIncomeMondayGlobal: string;
+  AvgIncomeTuesdayGlobal: string;
+  AvgIncomeWednesdayGlobal: string;
+  AvgIncomeThursdayGlobal: string;
+  AvgIncomeFridayGlobal: string;
+  AvgIncomeSaturdayGlobal: string;
 
   userstartDate: string;
   newestWorkDate: string;

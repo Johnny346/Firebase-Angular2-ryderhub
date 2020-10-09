@@ -33,7 +33,7 @@ export class ApiserviceService {
         .pipe(
           map((data) => {
             //You can perform some transformation here
-            //console.log("data ", data);
+           // console.log("data ", data);
           return data;
         }),
         catchError((err) => {

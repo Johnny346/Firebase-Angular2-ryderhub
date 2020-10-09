@@ -140,7 +140,23 @@
   </div>
   <!--/.card-->
 
- 
+ <!-- Trigger/Open The Modal -->
+<!--<button id="myBtn">Open Modal</button> -->
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span style="text-align: right;" class="close">&times;</span>
+     <br/>
+    <h3>Hello New User, 
+      <br/>
+      To get started upload your invoice's <a routerLink="../theme/upload">here :)</a></h3>
+   
+  </div>
+
+</div>
  
   <div class="row">
     <div class="col-md-12">
@@ -170,18 +186,18 @@
                 </div><!--/.col-->
                 <div class="col-sm-3">
                   <div class="callout callout-warning">
-                    <h6>Global</h6>
+                    <h6>All Ryders</h6>
                     <small class="text-muted">Average Daily Hours</small>
                     <br>
-                    <strong class="h4">--</strong>
+                    <strong class="h4">{{ avgDailyHoursGlobal }}</strong>
                   </div>
                 </div><!--/.col-->
                 <div class="col-sm-3">
                   <div class="callout callout-danger">
-                    <h6>Global</h6>
+                    <h6>All Ryders</h6>
                     <small class="text-muted">Avg Houly earnings</small>
                     <br>
-                    <strong class="h4">--</strong>
+                    <strong class="h4">{{ avgHourlyEarningsGlobal }}</strong>
                   </div>
                   
                 </div><!--/.col-->
@@ -208,16 +224,16 @@
                 
                 <div class="progress-group-prepend">
                   <span class="progress-group-text">
-                    Global Monday
+                    (All Ryders) Monday
                   </span>
                 </div>
                 <div class="progress-group-bars">
-                  <h6>Avg Orders: {{ avgDailyOrdersMonday }}</h6>
+                  <h6>Avg Orders: {{ avgDailyOrdersMondayGlobal }}</h6>
                   <div class="progress progress-xs">
                     <div class="progress-bar bg-info " id="monday-progBar-orders" role="progressbar" style="width:90%"  aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
                     
                   </div>
-                  <h6>Avg Earnings: &euro;{{ AvgIncomeMonday }}</h6>
+                  <h6>Avg Earnings: &euro;{{ AvgIncomeMondayGlobal }}</h6>
                   <div class="progress progress-xs">
                     <div class="progress-bar bg-danger" id="monday-progBar-earnings" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
@@ -241,15 +257,15 @@
                 </div>
                 <div class="progress-group-prepend">
                   <span class="progress-group-text">
-                    Global Tuesday
+                    (All Ryders) Tuesday
                   </span>
                 </div>
                 <div class="progress-group-bars">
-                  <h6>Avg Orders: {{ avgDailyOrdersTuesday }}</h6>
+                  <h6>Avg Orders: {{ avgDailyOrdersTuesdayGlobal }}</h6>
                   <div class="progress progress-xs">
                     <div class="progress-bar bg-info" id="tuesday-progBar-orders" role="progressbar" style="width: 56%" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <h6>Avg Earnings: &euro;{{ AvgIncomeTuesday }}</h6>
+                  <h6>Avg Earnings: &euro;{{ AvgIncomeTuesdayGlobal }}</h6>
                   <div class="progress progress-xs">
                     <div class="progress-bar bg-danger" id="tuesday-progBar-earnings" role="progressbar" style="width: 94%" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
@@ -273,15 +289,15 @@
                 </div>
                 <div class="progress-group-prepend">
                   <span class="progress-group-text">
-                    Global Wednesday
+                    (All Ryders) Wednesday
                   </span>
                 </div>
                 <div class="progress-group-bars">
-                  <h6>Avg Orders: {{ avgDailyOrdersWednesday }}</h6>
+                  <h6>Avg Orders: {{ avgDailyOrdersWednesdayGlobal }}</h6>
                   <div class="progress progress-xs">
                     <div class="progress-bar bg-info" id="wednesday-progBar-orders" role="progressbar" style="width: 12%" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <h6>Avg Earnings: &euro;{{ AvgIncomeWednesday }}</h6>
+                  <h6>Avg Earnings: &euro;{{ AvgIncomeWednesdayGlobal }}</h6>
                   <div class="progress progress-xs">
                     <div class="progress-bar bg-danger" id="wednesday-progBar-earnings" role="progressbar" style="width: 67%" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
@@ -305,15 +321,15 @@
                 </div>
                 <div class="progress-group-prepend">
                   <span class="progress-group-text">
-                    Global Thursday
+                    (All Ryders) Thursday
                   </span>
                 </div>
                 <div class="progress-group-bars">
-                  <h6>Avg Orders: {{ avgDailyOrdersThursday }}</h6>
+                  <h6>Avg Orders: {{ avgDailyOrdersThursdayGlobal }}</h6>
                   <div class="progress progress-xs">
                     <div class="progress-bar bg-info" id="thursday-progBar-orders" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <h6>Avg Earnings: &euro;{{ AvgIncomeThursday }}</h6>
+                  <h6>Avg Earnings: &euro;{{ AvgIncomeThursdayGlobal }}</h6>
                   <div class="progress progress-xs">
                     <div class="progress-bar bg-danger" id="thursday-progBar-earnings" role="progressbar" style="width: 91%" aria-valuenow="91" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
@@ -337,15 +353,15 @@
                 </div>
                 <div class="progress-group-prepend">
                   <span class="progress-group-text">
-                    Global Friday
+                    (All Ryders)  Friday
                   </span>
                 </div>
                 <div class="progress-group-bars">
-                  <h6>Avg Orders: {{ avgDailyOrdersFriday }}</h6>
+                  <h6>Avg Orders: {{ avgDailyOrdersFridayGlobal }}</h6>
                   <div class="progress progress-xs">
                     <div class="progress-bar bg-info" id="friday-progBar-orders" role="progressbar" style="width: 22%" aria-valuenow="22" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <h6>Avg Earnings: &euro;{{ AvgIncomeFriday }}</h6>
+                  <h6>Avg Earnings: &euro;{{ AvgIncomeFridayGlobal }}</h6>
                   <div class="progress progress-xs">
                     <div class="progress-bar bg-danger" id="friday-progBar-earnings" role="progressbar" style="width: 73%" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
@@ -369,15 +385,15 @@
                 </div>
                 <div class="progress-group-prepend">
                   <span class="progress-group-text">
-                    Global Saturday
+                    (All Ryders) Saturday
                   </span>
                 </div>
                 <div class="progress-group-bars">
-                  <h6>Avg Orders: {{ avgDailyOrdersSaturday }}</h6>
+                  <h6>Avg Orders: {{ avgDailyOrdersSaturdayGlobal }}</h6>
                   <div class="progress progress-xs">
                     <div class="progress-bar bg-info" id="saturday-progBar-orders" role="progressbar" style="width: 53%" aria-valuenow="53" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <h6>Avg Earnings: &euro;{{ AvgIncomeSaturday }}</h6>
+                  <h6>Avg Earnings: &euro;{{ AvgIncomeSaturdayGlobal }}</h6>
                   <div class="progress progress-xs">
                     <div class="progress-bar bg-danger" id="saturday-progBar-earnings" role="progressbar" style="width: 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
@@ -401,15 +417,15 @@
                 </div>
                 <div class="progress-group-prepend">
                   <span class="progress-group-text">
-                    Global Sunday
+                    (All Ryders) Sunday
                   </span>
                 </div>
                 <div class="progress-group-bars">
-                  <h6>Avg Orders: {{ avgDailyOrdersSunday }}</h6>
+                  <h6>Avg Orders: {{ avgDailyOrdersSundayGlobal }}</h6>
                   <div class="progress progress-xs">
                     <div class="progress-bar bg-info" id="sunday-progBar-orders" role="progressbar" style="width: 9%" aria-valuenow="9" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <h6>Avg Earnings: &euro;{{ AvgIncomeSunday }}</h6>
+                  <h6>Avg Earnings: &euro;{{ AvgIncomeSundayGlobal }}</h6>
                   <div class="progress progress-xs">
                     <div class="progress-bar bg-danger" id="sunday-progBar-earnings" role="progressbar" style="width: 69%" aria-valuenow="69" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
