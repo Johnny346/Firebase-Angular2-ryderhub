@@ -149,11 +149,9 @@
   <!-- Modal content -->
   <div class="modal-content">
     <span style="text-align: right;" class="close">&times;</span>
-     <br/>
     <h3>Hello New User, 
       <br/>
       To get started upload your invoice's <a routerLink="../theme/upload">here :)</a></h3>
-   
   </div>
 
 </div>
@@ -170,7 +168,7 @@
               <div class="row">
                 <div class="col-sm-3">
                   <div class="callout callout-info">
-                    <h6>RyderID: {{ryderID}}  </h6>
+                    <h6>RyderID: {{ id }}  </h6>
                     <small class="text-muted">Average Daily Hours</small>
                     <br>
                     <strong class="h4">{{ avgDailyHours }}</strong>
@@ -178,7 +176,7 @@
                 </div><!--/.col-->
                 <div class="col-sm-3">
                   <div class="callout callout-danger">
-                    <h6>RyderID: {{ryderID}} </h6>
+                    <h6>RyderID: {{ id }} </h6>
                     <small class="text-muted">Avg Houly earnings</small>
                     <br>
                     <strong class="h4">{{ avgHourlyEarnings }}</strong>
